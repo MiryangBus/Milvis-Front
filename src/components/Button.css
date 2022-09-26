@@ -1,0 +1,16 @@
+styleButton {
+  background-color: 0047FF;
+  height: 50px;
+}
+
+button[buttonSize = "search-button"] {
+  width: 350px;
+}
+
+button[buttonSize = "long-button"] {
+  width: 220px;
+}
+
+button[buttonSize = "short-button"] {
+  width: 110px;
+}

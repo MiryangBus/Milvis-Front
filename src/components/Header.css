@@ -1,0 +1,35 @@
+header {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.title-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+}
+
+.title-container  h1 {
+  font-size: 30px;
+}
+
+.navbar-container {
+  position: absolute;
+  right: 7%;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-container span {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+

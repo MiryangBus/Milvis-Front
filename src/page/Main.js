@@ -1,8 +1,14 @@
 import React from 'react'
+import FooterMain from '../components/Footer-main'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <>
+      <main>
+        
+      </main>
+      <FooterMain />
+    </>
   )
 }
 
