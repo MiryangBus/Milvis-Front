@@ -15,10 +15,12 @@ header {
   display: flex;
   justify-content: center;
   font-weight: 400;
+  
 }
 
 .title-container  h1 {
   font-size: 30px;
+
 }
 
 .navbar-container {
