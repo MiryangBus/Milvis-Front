@@ -1,16 +1,23 @@
-styleButton {
-  background-color: 0047FF;
+button {
+  margin: 10px 5px;
+  background-color: #0047FF;
   height: 50px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  font-size: 15px;
 }
 
-button[buttonSize = "search-button"] {
+.search-button {
   width: 350px;
 }
 
-button[buttonSize = "long-button"] {
+.long-button {
   width: 220px;
 }
 
-button[buttonSize = "short-button"] {
+.short-button {
   width: 110px;
 }

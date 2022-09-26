@@ -1,28 +1,29 @@
 import React from 'react'
+import "./Button.css";
 
 const sizes = ['long-button', 'short-button', 'search-button'];
 
-const Button = ({buttonSize, content}) => {
+const Button = ({buttonsize, content}) => {
   const buttonSelect = () => {
-    if (buttonSize === sizes[0]) {
+    if (buttonsize === sizes[0]) {
       return sizes[0];
     }
 
-    else if (buttonSize === sizes[1]) {
+    else if (buttonsize === sizes[1]) {
       return sizes[1];
     }
 
-    else if (buttonSize === sizes[2]) {
+    else if (buttonsize === sizes[2]) {
       return sizes[2];
     }
   }
 
   return (
-    <styleButton
-      buttonSize={buttonSelect()}
+    <button
+      className={buttonSelect()}
     >
-      ${content}
-    </styleButton>
+      {content}
+    </button>
   )
 }
 
