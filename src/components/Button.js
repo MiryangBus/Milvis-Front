@@ -2,7 +2,7 @@ import React from 'react'
 
 const sizes = ['long-button', 'short-button', 'search-button'];
 
-const Button = ({button(Size, content}) => {
+const Button = ({buttonSize, content}) => {
   const buttonSelect = () => {
     if (buttonSize === sizes[0]) {
       return sizes[0];
