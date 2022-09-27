@@ -1,21 +1,13 @@
-bus-date {
+.bus-date {
     width: 100%;
     height: 50px;
-    margin-left: 50px;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    line-height: 26px   /*행간*/
-  }
-  bus-date2 {
-    width: 100%;
-    height: 50px;
-    margin-left: 50px;
-    display: block;
+    display: flex; /*화면중앙고정*/
     justify-content: center;
     align-items: center;
     font-size: 15px;
     line-height: 26px;   /*행간*/
     white-space: nowrap;
   }
+.bus-date-space{
+  margin-left: 19px;
+}

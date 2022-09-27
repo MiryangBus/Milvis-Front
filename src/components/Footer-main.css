@@ -8,3 +8,20 @@ footer {
   font-size: 15px;
 }
 
+.footer-bus{
+  font-weight: bold;
+  background-color: aliceblue;
+  color:black;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  bottom: 0px;
+  position: fixed; /*이렇게하고 bottom 0px해야함*/
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.footer-space{
+  margin-left: 70px;
+}
