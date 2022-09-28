@@ -12,7 +12,8 @@ button {
 }
 
 .search-button {
-  width: 350px;
+  min-width: 320px;
+  width: 100%;
 }
 
 .long-button {

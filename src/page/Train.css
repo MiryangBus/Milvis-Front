@@ -1,0 +1,116 @@
+main {
+  display: block;
+  width: 100vw;
+  max-width: 450px;
+}
+
+.explain-container {
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.explain p:first-child {
+  font-size: 2rem;
+}
+
+.explain p:nth-child(2),
+.explain p:nth-child(3) {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-container form {
+  width: 90%;
+}
+
+form div {
+  margin: 0px 5px;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+form input,
+form select {
+  background-color: white;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+form input:hover,
+form input:focus {
+  background-color: #ebf0ff;
+  border: 2px solid #0047FF;
+}
+
+#time {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.small-explain {
+  margin-top:-5px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.small-explain span {
+  margin-right: 10px;
+}
+
+form .train-input-container {
+  margin: 0 auto;
+  width: 70%;
+  min-width: 250px;
+  margin-top: 50px;
+  margin-bottom: 5px;
+}
+
+.train-input-container .train-contents-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.train-contents-container div:first-child {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.train-select {
+  font-size: 2.5rem;
+}
+
+form .button-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* delete icon in input type of date, time */
+::-webkit-calendar-picker-indicator {
+  font-size: 1.7rem;
+}
+
+
