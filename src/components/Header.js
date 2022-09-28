@@ -9,7 +9,7 @@ const Header = () => {
         <h1>Milvis</h1>
       </div>
       <div className="navbar-container">
-        <List width={"2rem"} height={"2rem"}/>
+        <List/>
       </div>
     </header>
   )
