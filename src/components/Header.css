@@ -30,8 +30,8 @@ header {
   justify-content: center;
 }
 
-.navbar-container {
-  font-size: 30px;
+.navbar-container span {
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.8);
 }
 
