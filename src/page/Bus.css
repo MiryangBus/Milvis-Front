@@ -19,6 +19,7 @@
 .bus-content{
   background-color: aliceblue;
   height: 710px;
+  border-radius: 10px;
 }
 
 .bus-stop{
