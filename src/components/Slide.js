@@ -6,6 +6,7 @@ const IMAGE_LENGTH = 3;
 
 const Slide = () => {
   const [currIndex, setCurrIndex] = useState(1);
+  console.log(currIndex);
 
   // * change pagination status 
   useEffect(() => {
@@ -13,26 +14,29 @@ const Slide = () => {
       setCurrIndex((curr) => {
         curr++;
         if (curr > IMAGE_LENGTH) curr = 1;
+      // * call slide handler
+        slideHandler(curr);
         return curr;
       })
-      // * call slide handler
       return () => clearInterval(timer);
     }, 4000);
   }, [])
 
   // * 클릭 한 navigation으로 focus 이동
-  const navOnClick = (e) => {
+  const onClick = (e) => {
     const {index} = e.target.dataset;
     setCurrIndex((curr) => {
       curr = Number(index);
+      // * call slide handler
+      slideHandler(curr);
       return curr;
     })
   }
   // * slide handler function
-  const slideHandler = () => {
+  const slideHandler = (curr) => {
     const slideWidth = document.querySelector('.slide').clientWidth;
     const ul = document.querySelector('ul');
-    switch(currIndex) {
+    switch(curr) {
       case 1:
         ul.setAttribute('style', `left: ${0}px`)
         break;
@@ -89,15 +93,15 @@ const Slide = () => {
           <div
           data-index = "1"
           className={currIndex === 1 ? 'select' : ''}
-          onClick={navOnClick}></div>
+          onClick={onClick}></div>
           <div 
           data-index = "2"
           className={currIndex === 2 ? 'select' : ''}
-          onClick={navOnClick}></div>
+          onClick={onClick}></div>
           <div
           data-index = "3"
           className={currIndex === 3 ? 'select' : ''}
-          onClick={navOnClick}></div>
+          onClick={onClick}></div>
         </div>
       </div>
   )
