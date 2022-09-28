@@ -13,7 +13,7 @@ const Header = () => {
 
       <Link to = "/sidebar" style={{ textDecoration: 'none' , color:"white"}}>
         <div className="navbar-container">
-          <List/>
+          <List width={"2rem"} height={"2rem"}/>
         </div>
       </Link>
 
