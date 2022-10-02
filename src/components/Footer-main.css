@@ -25,3 +25,13 @@ footer {
 .footer-space{
   margin-left: 70px;
 }
+
+.footer-bus-state{
+  position: absolute;
+  width: 214px;
+  height: 11px;
+  left: 214px;
+  top: 812px;
+
+  background: #0047FF;
+}

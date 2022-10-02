@@ -12,13 +12,13 @@
 }
 
 .bus-stop-space{
-  margin-left: 75px;
+  margin-left: 65px;
   font-weight: bold;
 }
 
 .bus-content{
   background-color: aliceblue;
-  height: 710px;
+  height: 650px;
   border-radius: 10px;
 }
 
@@ -31,4 +31,27 @@
   font-size: 15px;
   line-height: 26px;   /*행간*/
   color:blue;
+}
+
+.bus-time1{
+  color:black;
+  position: absolute;
+  height: 66px;
+  top: 160px;
+  left: 25px;
+}
+.bus-time2{
+  color:black;
+  position: absolute;
+  height: 66px;
+  top: 160px;
+  left: 165px;
+}
+.bus-time3{
+  color:black;
+  position: absolute;
+  height: 66px;
+  top: 160px;
+  left: 305px;
+
 }
