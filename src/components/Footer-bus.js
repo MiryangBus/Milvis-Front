@@ -7,9 +7,10 @@ import "./Footer-main.css";
 const FooterBus = () => {
   return (
     <div className='footer-bus'>
-      <div >학교-&gt;밀양역 </div> {/*div span text차이? */}
+      <div>학교-&gt;밀양역 </div> {/*div span text차이? */}
       <div className='footer-space'>밀양역-&gt;학교 </div>
     </div>
+
 
   )
 }
