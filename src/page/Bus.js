@@ -23,16 +23,28 @@ const Bus = () =>  {
   <>
     <HeaderBus></HeaderBus>
     <div className="bus-content">
-    <div className = "bus-stop">
-        <text>밀양캠</text> {/* font 정해서 일괄 적용하기 */}
-          <ul className='bus-time1'>{timeList1}</ul>
-        <text className="bus-stop-space">밀양역</text>
-          <ul className='bus-time2'>{timeList2}</ul>
-        <text className="bus-stop-space">영남루</text>
-          <ul className='bus-time3'>{timeList3}</ul>
+      <div className = "bus-stop">
+        <text>캠퍼스</text>
+        <text>영남루</text>
+        <text>밀양역</text>
       </div>
-      {/*<Truck front size="3em" width="7em" color="black"/>*/}
+    <div className='bus-content-time'>
+      <div>
+        <Truck front size="3em" width="7em" color="black"/>
+        {timeList1}
+      </div>
+      <div>
+        <Truck front size="3em" width="7em" color="black"/>
+        {timeList2}
+      </div>
+      <div>
+        <Truck front size="3em" width="7em" color="black"/>
+        {timeList3}
+      </div>
     </div>
+
+      </div>
+        
     <FooterBus></FooterBus>
   </>
   )

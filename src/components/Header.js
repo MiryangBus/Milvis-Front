@@ -22,16 +22,16 @@ const Header = () => {
       <div className={`sidebar ${isOpen ? "sidebar--open" : "" }`}>
           <List onClick={ToggleSidebar} width={"2rem"} height={"2rem"}/>
           {console.log(isOpen)} 
-          <div className="sidebar-position">
-          <span>기차-버스 조회</span>
+            <div className="sidebar-position">
+              <span>기차-버스 조회</span>
+            </div>
+            <div className="sidebar-position">
+              <span>버스 정류장 찾기</span>
+            </div>
+            <div className="sidebar-position">
+              <span>버스 시간표</span>
+            </div>
           </div>
-          <div className="sidebar-position">
-            <span>버스 정류장 찾기</span>
-          </div>
-          <div className="sidebar-position">
-            <span>버스 시간표</span>
-          </div>
-      </div>
 
 
       

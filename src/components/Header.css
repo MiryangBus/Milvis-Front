@@ -56,15 +56,16 @@ header {
 
 .sidebar .sidebar-position:hover {
   background-color: #3f5159;
-  border-right: 5px #e84a5f solid;
+  border-right: 5px #0047FF solid;
 }
 
 .sidebar svg {
-  color: #e84a5f;
+  color: #0047FF;
   min-width: 25px;
 }
 
 .sidebar span {
+  font-size: 15px;
   width: 0;
   height: 0;
   padding: 0 15px;
@@ -79,9 +80,11 @@ header {
 .sidebar--open {
   z-index: 3;
   height: 100%;
-  width: 700px;
+  width: 100%;
   font-size: 23px;
   transition: width 0.3s ease;
+  /* position: relative;
+    top: 74px; */
 }
 
 .sidebar--open .sidebar-position span {

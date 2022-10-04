@@ -17,9 +17,11 @@
 }
 
 .bus-content{
-  background-color: aliceblue;
+  text-align: center;
+  background-color: white;
   height: 650px;
   border-radius: 10px;
+  
 }
 
 .bus-stop{
@@ -33,25 +35,9 @@
   color:blue;
 }
 
-.bus-time1{
+.bus-content-time{
+  display: flex;
+  line-height: 26px;
   color:black;
-  position: absolute;
-  height: 66px;
-  top: 160px;
-  left: 25px;
-}
-.bus-time2{
-  color:black;
-  position: absolute;
-  height: 66px;
-  top: 160px;
-  left: 165px;
-}
-.bus-time3{
-  color:black;
-  position: absolute;
-  height: 66px;
-  top: 160px;
-  left: 305px;
-
+  position: relative;
 }
