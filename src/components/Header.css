@@ -32,3 +32,74 @@ header {
   font-size: 30px;
   color: rgba(255, 255, 255, 0.8);
 }
+
+
+/* sidebar css */
+  
+.sidebar {
+  background: #252834;
+  position: fixed;
+  top: 0;
+  width: 50px;
+  transition: width 0.3s ease;
+  padding-top: 15px;
+}
+
+.sidebar .sidebar-position {
+  /* height: 50px; */
+  /* cursor: pointer; */
+  display: flex;
+  /* align-items: center; */
+  /* padding: 0 12px; */
+  /* text-align: left; */
+}
+
+.sidebar .sidebar-position:hover {
+  background-color: #3f5159;
+  border-right: 5px #0047FF solid;
+}
+
+.sidebar svg {
+  color: #0047FF;
+  min-width: 25px;
+}
+
+.sidebar span {
+  font-size: 15px;
+  width: 0;
+  height: 0;
+  padding: 0 15px;
+  transition: width 0.3s ease;
+  color: #c9c9c9;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar--open {
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  font-size: 23px;
+  transition: width 0.3s ease;
+  /* position: relative;
+    top: 74px; */
+}
+
+.sidebar--open .sidebar-position span {
+  display: block;
+  width: 100%;
+  padding-top: 31px;
+  height: auto;
+}
+
+.trigger {
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px 15px;
+}

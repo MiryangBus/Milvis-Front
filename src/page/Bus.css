@@ -12,13 +12,16 @@
 }
 
 .bus-stop-space{
-  margin-left: 75px;
+  margin-left: 65px;
   font-weight: bold;
 }
 
 .bus-content{
-  background-color: aliceblue;
-  height: 710px;
+  text-align: center;
+  background-color: white;
+  height: 650px;
+  border-radius: 10px;
+  
 }
 
 .bus-stop{
@@ -30,4 +33,11 @@
   font-size: 15px;
   line-height: 26px;   /*행간*/
   color:blue;
+}
+
+.bus-content-time{
+  display: flex;
+  line-height: 26px;
+  color:black;
+  position: relative;
 }
