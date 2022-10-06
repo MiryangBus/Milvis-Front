@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Header from "../components/Header";
-
+import "./Map.css";
+import Button from 'react-bootstrap/Button';
 /*global kakao*/ 
 const Map = () => {
   
@@ -17,7 +18,9 @@ const Map = () => {
 
   return (
     <div>
-      <div id="map" style={{width:"500px", height:"400px"}}></div> 
+      <div className='map-explain'>출발 지점을 마커로 <br />찍어주세요 </div>
+      <div id="map" style={{width:"350px", height:"700px"}}></div> 
+      <Button className="map-button" variant="primary">   다음  </Button>{' '}
     </div>
   )
 }

@@ -10,6 +10,7 @@ footer {
 .footer-line{
   border: #0047FF solid !important; 
   border-width: 10px 0 0 0 !important;
+  color: #0047FF !important;
 }
 
 .footer-container{
@@ -45,7 +46,7 @@ footer {
   background-color: white;
   color:black;
   width: 50%;
-  height: 60px;
+  height: 68px;
   display: flex;
   bottom: 0px;
   justify-content: center;
@@ -62,7 +63,7 @@ footer {
   background-color: white;
   color:black;
   width: 50%;
-  height: 60px;
+  height: 68px;
   display: flex;
   bottom: 0px;
   justify-content: center;
