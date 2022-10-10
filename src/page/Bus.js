@@ -1,29 +1,23 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import "./Bus.css";
 import FooterBus from "../components/Footer-bus";
-import {Link} from 'react-router-dom'
+import {Truck} from 'react-bootstrap-icons' ;
+import HeaderBus from "../components/Header-bus";
 import BusTime from '../components/BusTime';
-import HeaderBus from '../components/Header-bus';
-import ReactDOM from 'react-dom'
+
 const Bus = () =>  {
-  const [date, setDate] = useState("weekday");
-
-  const handleClickButton = e => {
-    const { date } = e.target;
-    setDate(date);
-  };
-  
-
+  const [date, setDate] = useState();
+  const [goto,setGoto] =useState("station");
+  useEffect(() => {
+    console.log(date);
+  },[date]);
+  useEffect(() => {
+    console.log(goto);
+  },[goto]);
 
   return (
   <>
-  <div className="bus-date">
-    <HeaderBus onClick={handleClickButton} date={"weekday"}>평일</HeaderBus>
-    <HeaderBus date={"weekend"}>주말</HeaderBus>
-    <HeaderBus date={"onlyCampus"}>대학만 방학</HeaderBus>
-    <HeaderBus date={"holiday"}>모두 방학</HeaderBus>
-  </div>
-
+    <HeaderBus date={date} setDate={setDate}></HeaderBus>
     <div className="bus-content">
       <div className = "bus-stop">
         <text>캠퍼스</text>
@@ -31,12 +25,12 @@ const Bus = () =>  {
         <text>밀양역</text>
       </div>
       <div className='bus-content-time'>
-        <BusTime date={date}></BusTime>
+        <BusTime goto = {goto} date={date}></BusTime>
       </div>
     </div>
-    <FooterBus></FooterBus>
+    <FooterBus goto={goto} setGoto={setGoto}></FooterBus>
   </>
   )
 }
-
 export default Bus
+

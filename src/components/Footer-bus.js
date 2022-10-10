@@ -4,14 +4,17 @@ import "./Footer-main.css";
 //Footer-main = Footer-main, Footer-bus 이므로 Footer.css로 합치고
 //안에 class로 쪼개기.
 //수연이는 .안씀 나는 .쓰고 className으로
-const FooterBus = () => {
+const FooterBus = (props) => {
 
   const [isOpen, setIsopen] = useState(true);
   const toStation = () => {
       setIsopen(true)
+      props.setGoto("station")
   }
   const toCampus = () => {
      setIsopen(false)
+     props.setGoto("campus")
+
 }
   
   return (
