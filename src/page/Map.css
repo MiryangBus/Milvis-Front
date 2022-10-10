@@ -1,0 +1,23 @@
+.map-explain {
+    background-color: #252834;
+    height: 60px;
+    left: 122px;
+    top: 93px;
+    margin: 10px 0px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: -0.05em;
+  }
+
+  .map-button{
+    position: relative;
+    z-index: 2;
+    height: 30px;
+    width: 70px;
+    margin-left: 60%;
+    bottom: 39px;
+  }
