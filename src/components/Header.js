@@ -2,7 +2,6 @@ import "./Header.css";
 import { List } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import SideBar from "./SideBar";
 const Header = () => {
     const [isOpen, setIsopen] = useState(false);
     const ToggleSidebar = () => {
