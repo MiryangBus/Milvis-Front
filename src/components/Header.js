@@ -13,11 +13,14 @@ const Header = () => {
   return (
     <header>
       <div className="title-container" >
-        <Link to = "/" style={{ textDecoration: 'none' , color:"white"}}>
+        <Link to = "/" style={{ textDecoration: 'none' , color: "white"}}>
             <h1>Milvis</h1>
         </Link>
       </div>
-
+      <div className="navbar-container">
+        <Link to = "/sidebar" style={{ textDecoration: 'none' , color: "white"}}>
+          <List width={"2rem"} height={"2rem"}/>
+          </Link>
       <div className="navbar-container">
       <div className={`sidebar ${isOpen ? "sidebar--open" : "" }`}>
           <List onClick={ToggleSidebar} width={"2rem"} height={"2rem"}/>
@@ -32,9 +35,6 @@ const Header = () => {
               <span>버스 시간표</span>
             </div>
           </div>
-
-
-      
       </div>
     </header>
   )

@@ -13,6 +13,7 @@
 }
 
 body {
+  min-width: 320px;
   background-color: var(--main);
   color: white;
   box-sizing: border-box;
@@ -22,11 +23,4 @@ body {
 
 .point {
   color: var(--point);
-}
-
-main {
-  height: calc(100vh - 112px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
