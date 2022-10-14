@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import Button from './Button'
 import "./Slide.css";
 const IMAGE_LENGTH = 3;
@@ -63,7 +64,9 @@ const Slide = () => {
               <p className="small-explain">열차와 버스 시간표를 한 번에 조회해보세요.</p>
             </div>
             <div className="slide-button">
+              <Link to="/train">
               <Button buttonsize={"long-button"} content={"시간표 비교 바로가기 →"}/>
+              </Link>
             </div>
           </li>
           <li className='slide-item item2'>
@@ -74,7 +77,9 @@ const Slide = () => {
               <p className='small-explain'>목적지에서<br />가장 가까운 정류장을 알려드려요.</p>
             </div>
             <div className="slide-button">
-              <Button buttonsize={"long-button"} content={"길찾기 바로가기 →"}/>
+              <Link to="/map">
+                <Button buttonsize={"long-button"} content={"길찾기 바로가기 →"}/>
+              </Link>
             </div>
           </li>
           <li className='slide-item item3'>
@@ -85,7 +90,9 @@ const Slide = () => {
               <p className='small-explain'>더 직관적인<br/>시간표를 통해 한 눈에 확인해보세요.</p>
             </div>
             <div className="slide-button">
-              <Button buttonsize={"long-button"} content={"버스 시간표 확인하기 →"}/>
+              <Link to="/bus">
+                <Button buttonsize={"long-button"} content={"버스 시간표 확인하기 →"}/>
+              </Link>
             </div>
           </li>
         </ul>
