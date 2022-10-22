@@ -18,11 +18,11 @@ function TrainResult() {
         "date": "2022-10-10",
         "time": "14",
         "times" : [
-            {"type" : "bus", "name" : "아리랑04", "depart" : "14: 05", "arrive" : "14: 17"},
-            {"type" : "train", "name" : "srt", "depart" : "14: 08", "arrive" : "14: 40"},
-            {"type" : "train", "name" : "ktx", "depart" : "14 :30", "arrive" : "15: 17"},
-            {"type" : "bus", "name" : "아리랑04", "depart" : "14: 44", "arrive" : "15: 00"},
-            {"type" : "train", "name" : "무궁화", "depart" : "14: 55", "arrive" : "15: 32"},
+            {"type" : "bus", "name" : "아리랑04", "depart" : "14 : 05", "arrive" : "14 : 17"},
+            {"type" : "train", "name" : "srt", "depart" : "14 : 08", "arrive" : "14 : 40"},
+            {"type" : "train", "name" : "ktx", "depart" : "14 : 30", "arrive" : "15 : 17"},
+            {"type" : "bus", "name" : "아리랑04", "depart" : "14 : 44", "arrive" : "15 : 00"},
+            {"type" : "train", "name" : "무궁화", "depart" : "14 : 55", "arrive" : "15 : 32"},
         ]
     };
     
@@ -40,9 +40,9 @@ function TrainResult() {
     }
 
     // * List Component - Bus -> Train
-    const DepartTimeList = ({type, name, depart, arrive}) => {
+    const DepartTimeList = ({order, type, name, depart, arrive}) => {
         return (
-            <li>
+            <li className={setMarginBottom(order)}>
                 <div className="left-item">{type === "bus" ? <Card name={name} depart={depart} arrive={arrive} /> : null }</div>
                 <div className="center-item"></div>
                 <div className="right-item">{type === "train" ? <Card name={name} depart={depart} arrive={arrive} /> : null }</div>
@@ -60,6 +60,44 @@ function TrainResult() {
             </li>
         )
     }
+
+    const calInterval = () => {
+        // * 0. 출발시간을 기준으로 margin-bottom 을 가져와서 각 값을 재설정 해준다. 
+        // * 1. li 컴포넌트에 클래스로 값을 달리 해준다 -> 몇 번 째인지 어케 알지
+
+        const departTimes = [];
+
+        for (let {depart} of data.times) {
+            const minute = depart.split(" : ")[1];
+            departTimes.push(Number(minute));
+        }
+
+        for (let i=0; i<departTimes.length-1; i++) {
+            timeInterval.push(departTimes[i + 1] - departTimes[i]);
+        }
+        
+    }
+
+    const setMarginBottom = (order) => {
+        let margin = '';
+        console.log(timeInterval[order]);
+
+        if (timeInterval[order] <= 10) {
+            margin = 'small-margin';
+        } else if (timeInterval[order] <= 20) {
+            margin = 'small-medium-margin';
+        } else if (timeInterval[order] <= 30) {
+            margin = 'medium-margin';
+        } else if (timeInterval[order] <= 40) {
+            margin = 'medium-large-margin'
+        } else {
+            margin = 'large-margin'
+        }
+
+        return margin;
+    }
+
+    calInterval();
 
   return (
     <main>
@@ -92,7 +130,7 @@ function TrainResult() {
                 <ul className="times-container">
                     <div className="center-line"></div>
                     {data.type === "depart" ? data.times.map((item, index) => {
-                        return <DepartTimeList key={index} type={item.type} name={item.name} depart={item.depart} arrive={item.arrive}/>
+                        return <DepartTimeList key={index} order={index} type={item.type} name={item.name} depart={item.depart} arrive={item.arrive}/>
                     }) : data.times.map((item, index) => {
                         return <ArriveTimeList key={index} type={item.type} name={item.name} depart={item.depart} arrive={item.arrive}/>
                     })}

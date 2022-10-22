@@ -12,10 +12,12 @@ button {
 }
 
 .search-button {
+  /* max-width: 200px; */
   width: 100%;
 }
 
 .long-button {
+  max-width: 250px;
   width: 90%;
 }
 
