@@ -40,8 +40,8 @@
 
 현재 submain이 main 브랜치의 역할을 대신 함
 
-0. `npx react-create-app (폴더명)` 으로 react-app 생성
+0. 터미널에 `npx react-create-app (폴더명)` 으로 react-app 생성
 
 1. submain 혹은 main 레포지토리의 코드 다운로드 후, 위에서 생성한 폴더에 다운 받은 파일들을 옮기기
 
-2. `npm start` 를 통해 서버 구동 (local 3000번으로 이어짐)
+2. 터미널에 `npm start` 를 통해 서버 구동 (local 3000번으로 이어짐)
