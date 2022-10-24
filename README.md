@@ -20,6 +20,8 @@
 
 3. 기존 `버스 시간표` 디자인 수정
 
+### `전체 디자인`
+
 <img width="300px" alt="image" src="https://user-images.githubusercontent.com/80307321/197475873-9fb9b024-8b9f-4a5e-bc38-24d23d31091a.png">
 
 ## 기능 설명
