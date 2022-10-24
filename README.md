@@ -1,70 +1,34 @@
-# Getting Started with Create React App
-https://icons.getbootstrap.com/#usage
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 밀양 시내 노선도 프로젝트 🚎
 
-## Available Scripts
+## 개요
 
-In the project directory, you can run:
+부산대학교 밀양캠퍼스 학생들을 위한 밀양 시내 노선도 서비스
 
-### `npm start`
+기능 1. 열차 - 버스 시간표를 동시 조회
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+기능 2. 밀양 시내 길 찾기 서비스
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+기능 3. 일반 버스 시간표
 
-### `npm test`
+## 기능 1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 열차 - 버스 시간표 동시 조회
 
-### `npm run build`
+0. 출발 날짜, 시간, 도착역, 출발역 선택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. 사용자가 선택한 정보를 바탕으로 해당 날짜와 시간에 있는 열차, 버스 시간표를 조회
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. 타임라인 형식으로 시간에 따라 간격을 크게 두어 시각적으로 시간 간격을 확인할 수 있게 함
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 기능 2
 
-### `npm run eject`
+0. 출발, 도착 지점 선택
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. 가장 가까운 출발 정류장과 도착 정류장을 알려줌
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 기능 3
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+0. 기존 밀양 버스 시간표를 더 보기 쉬운 레이아웃으로 제작
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
