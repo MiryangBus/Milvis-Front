@@ -1,6 +1,6 @@
 import React from 'react'
-import FooterMain from '../components/Footer-main'
 import Slide from '../components/Slide'
+import FooterMain from '../components/FooterMain';
 import "./Main.css";
 
 const Main = () => {

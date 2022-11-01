@@ -2,7 +2,7 @@ import "./Header.css";
 import { List } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import SideBar from "./SideBar";
+
 const Header = () => {
     const [isOpen, setIsopen] = useState(false);
     const ToggleSidebar = () => {
@@ -31,7 +31,6 @@ const Header = () => {
                         width={"2rem"}
                         height={"2rem"}
                     />
-                    {console.log(isOpen)}
                     <div className="sidebar-position">
                         <span>기차-버스 조회</span>
                     </div>

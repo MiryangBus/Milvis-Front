@@ -5,6 +5,7 @@ import Main from "./page/Main";
 import Train from "./page/Train"
 import Map from "./page/Map";
 import Bus from "./page/Bus";
+import TrainResult from "./page/TrainResult";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/bus" element={<Bus />}/>
+          <Route exact path="/train-result" element={<TrainResult />}/>
         </Routes>
       </Router>
     </div>

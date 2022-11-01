@@ -1,8 +1,8 @@
 import React from 'react';
 import "./Bus.css";
-import FooterBus from "../components/Footer-bus";
+import FooterBus from "../components/FooterBus";
 import {Truck} from 'react-bootstrap-icons' ;
-import HeaderBus from "../components/Header-bus";
+import HeaderBus from "../components/HeaderBus";
 
 const BusTimeTable = [
   {ID:1, hour:6, goto:'station', time1:'6시 05분',time2:'6시 05분',time3:'6시 05분'},
