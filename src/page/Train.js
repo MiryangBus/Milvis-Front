@@ -1,7 +1,10 @@
-import Button from '../components/Button'
-import { useNavigate } from 'react-router-dom';
-import "./Train.css";
 import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import "./Train.css";
+import Button from '../components/Button'
+import {sendData} from "../components/useData";
+
 
 /*
   * render 
@@ -220,8 +223,22 @@ function Train() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // 페이지 전환 (Link를 Button에 달면 require이 안 먹음)
-    // navigate 함수로 강제 url이동
+
+    const data = {};
+
+    const dateData = document.querySelector('#date').value;
+    const timeData = document.querySelector('select').value;
+
+    data.date = dateData;
+    data.time = timeData;
+    data.depart = departStation;
+    data.arrive = arriveStation;
+
+    sendData('', JSON.stringify(data));
+
+    /* 4.2 페이지 전환 
+      (Link를 Button에 달면 require이 안 먹음)
+      navigate 함수로 강제 url이동 */
     navigate('/train-result');
   }
 
