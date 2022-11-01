@@ -3,15 +3,35 @@ import { useNavigate } from 'react-router-dom';
 import "./Train.css";
 import {useState} from 'react';
 
-// TODO
-//검색바 기능 어떻게 할 것인지 결정하기
-// TODO 
-// 출발, 도착역 강조 표시
+/*
+  * render 
+  - 날짜 조회
+  - 시간 조회
+  - 출발, 도착역 선택
+
+  * Logic
+  - 1. [x] 날짜 조회
+      1.1 min - max 시간 설정 
+  - 2. [x] 시간 조회 컴포넌트 : <TimeSelcet />
+  - 3. [x] 출발역, 도착역 선택
+      3.0 출발역과 도착역을 보여주는 list 컴포넌트 : <StationSelect />
+      3.1 출발역 클릭 시 -> 출발역 선택 창이 나타남
+      3.2 도착역 클릭 시 -> 도착역 선택 창이 나타남
+      3.3 reverse icon 클릭 시 -> 출발, 도착역의 state가 서로 바뀜
+      3.4 station state 변경 -> 한쪽 역을 선택하면 다른 한쪽 역을 밀양역으로 바꿔줌 
+  - 4. [ ] 조회하기 클릭
+      4.1 useData의 sendData()함수 호출해서 서버로 전송
+      4.2 trainResult.js 페이지로 넘어감
+*/
 
 function Train() {  
   const navigate = useNavigate();
+  // Flag State
+  // 출발, 도착역을 선택할 수 있는 option 들을 보여주는 플래그
   const [departFlag, setDepartFlag] = useState(0);
   const [arriveFlag, setArriveFlag] = useState(0);
+  // Station State
+  // 출발, 도착 역에 따라 바뀌는 state
   const [departStation, setDepartStation] = useState('밀양');
   const [arriveStation, setArriveStation] = useState('부산');
 
@@ -30,9 +50,9 @@ function Train() {
     ]
   }
 
-  // * 한달 뒤 시간 계산 해주는 함수 + 시간 <select> </select> 컴포넌트
-
+  // * 1.1 min - max 시간 설정
   const today = new Date().toISOString().split("T")[0];
+  // 1.1 한달 뒤 날짜 계산하는 함수
   const timeCal = () => {
     const today = new Date();
     const day = today.getDate();
@@ -42,15 +62,20 @@ function Train() {
 
     return endDt;
   }
+  
+  // --------------------------------------------------------------------------------
+
+  // * 2. 시간 조회 컴포넌트 <TimeSelect />
 
   const TimeSelect = () => {
     const times = [];
-
+    // 시간 06~23시를 times 배열 안에 push
     for (let i=6; i<24; i++) {
       const c = String(i).padStart(2, '0');
       times.push(c);
     }
-
+    // render
+    // <option>시간</option> 형태
     return (
       <select id="time">
         <optgroup className='time-options'>
@@ -62,98 +87,11 @@ function Train() {
     )
   }
 
-  // * ---------------------------------------------------------
+  // --------------------------------------------------------------------------------
 
-  // * depart & arrive 클릭 이벤트 함수 & <select></select> 컴포넌트 
+  // * 3. 출발역, 도착역 조회 관련 메소드
 
-  const departClick = () => {
-    setArriveFlag(current =>  {
-      current = 0;
-      return current;
-    })
-
-    setDepartFlag(current => {
-      if (current === 0) {
-        current = 1;
-      } else if (current === 1) {
-        current = 0;
-      }
-      return current;
-    })
-  }
-
-  const arriveClick = () => {
-    setDepartFlag(current =>  {
-      current = 0;
-      return current;
-    })
-
-    setArriveFlag(current => {
-      if (current === 0) {
-        current = 1;
-      } else if (current === 1) {
-        current = 0;
-      }
-      return current;
-    })
-  }
-
-  const stationChange = (e) => {
-    const name = e.target.value;
-    console.log(name);
-
-    if (departFlag === 1) {
-      setDepartStation(current => {
-        current = name;
-        if (arriveStation !== '밀양' && current !== '밀양') {
-          setArriveStation(current => {
-            current = '밀양';
-            return current;
-          })
-        }
-        return current;
-      })
-
-      setDepartFlag(current => {
-        current = 0;
-        return current;
-      })
-    }
-
-    if (arriveFlag === 1) {
-      setArriveStation(current => {
-        current = name;
-        if (departStation !== '밀양' && current !== '밀양') {
-          setDepartStation(current => {
-            current = '밀양';
-            return current;
-          })
-        }
-        return current;
-      })
-
-      setArriveFlag(current => {
-        current = 0;
-        return current;
-      })
-    }
-  }
-
-  const reverseStation = () => {
-    const depart = departStation;
-    const arrive = arriveStation;
-
-    setDepartStation(current => {
-      current = arrive;
-      return current;
-    })
-
-    setArriveStation(current => {
-      current = depart;
-      return current;
-    })
-  }
-
+  // 3.0 출발역 도착역들을 보여주는 컴포넌트 
   const StationSelect = () => {
     const selected = departFlag === 1 ? departStation : arriveStation;
     return (
@@ -172,11 +110,124 @@ function Train() {
     )
   }
 
+  // 3.1 출발역 클릭 시 출발역 리스트 보여주는 함수
+  const departClick = () => {
+    // 도착역을 보여주는 컴포넌트를 숨김
+    setArriveFlag(current =>  {
+      current = 0;
+      return current;
+    })
+    // 출발역 리스트 컴포넌트를 보여줌
+    setDepartFlag(current => {
+      if (current === 0) {
+        current = 1;
+      } else if (current === 1) { // 만약 이미 컴포넌트가 활성돼 있으면 -> 닫기
+        current = 0;
+      }
+      return current;
+    })
+  }
+
+  // 3.2 도착역 클릭 시 도착역 리스트 보여주는 함수
+  const arriveClick = () => {
+    // 출발역을 보여주는 컴포넌트를 숨김
+    setDepartFlag(current =>  {
+      current = 0;
+      return current;
+    })
+    // 도착역 리스트 컴포넌트를 보여줌
+    setArriveFlag(current => {
+      if (current === 0) {
+        current = 1;
+      } else if (current === 1) { // 이미 컴포넌트 활성돼 있는 상태라면 -> 닫기
+        current = 0;
+      }
+      return current;
+    })
+  }
+
+  // 3.3 reverse Icon 클릭 시 출발역과 도착역을 바꿔주는 함수
+  const reverseStation = () => {
+    const depart = departStation;
+    const arrive = arriveStation;
+    // 서로의 state를 바꿔 줌
+    setDepartStation(current => {
+      current = arrive;
+      return current;
+    })
+
+    setArriveStation(current => {
+      current = depart;
+      return current;
+    })
+  }
+
+  // 3.4 출발 역 - 도착 역 중 역을 선택하면 다른 역을 밀양역으로 바꿔주는 함수 
+  const stationChange = (e) => {
+    // 클릭한 target의 역 이름을 가져옴
+    const name = e.target.value;
+    
+    /* 
+      출발역의 역을 변경 -> departFlag가 1로 설정된 상태
+      도착역을 자동으로 밀양역으로 바꿔야 함 
+    */
+    if (departFlag === 1) {
+      setDepartStation(current => {
+        current = name;
+        // 도착역이 이미 밀양역으로 설정되지 않은 경우에만
+        if (arriveStation !== '밀양' && current !== '밀양') {
+          // 도착역 state를 밀양으로 바꾸기
+          setArriveStation(current => {
+            current = '밀양';
+            return current;
+          })
+        }
+        return current;
+      })
+      // departFlag를 0으로 바꿈
+      setDepartFlag(current => {
+        current = 0;
+        return current;
+      })
+    }
+    /* 
+      도착역이 바뀐 경우 -> arriveFlag 가 1로 설정 돼 있음
+      자동으로 출발역을 밀양역으로 바꿔줘야 함
+    */
+    if (arriveFlag === 1) { 
+      setArriveStation(current => {
+        current = name;
+        // 출발역이 이미 밀양역이면 바꿀 필요 없음
+        if (departStation !== '밀양' && current !== '밀양') {
+          setDepartStation(current => {
+            current = '밀양';
+            return current;
+          })
+        }
+        return current;
+      })
+      // flag를 다시 0으로 복귀
+      setArriveFlag(current => {
+        current = 0;
+        return current;
+      })
+    }
+  }
+
+  // --------------------------------------------------------------------------------
+
+  // * 4. Submit Button 눌렀을 때 
+
   const onSubmit = (e) => {
     e.preventDefault();
-    // TODO 페이지 전환 (Link를 Button에 달면 require이 안 먹음)
+    // 페이지 전환 (Link를 Button에 달면 require이 안 먹음)
+    // navigate 함수로 강제 url이동
     navigate('/train-result');
   }
+
+  // --------------------------------------------------------------------------------
+
+  // * Render
 
   return (
     <main>
