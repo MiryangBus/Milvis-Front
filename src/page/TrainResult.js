@@ -61,9 +61,10 @@ function TrainResult() {
         )
     }
 
+    // * 시간 간격 계산 함수 
     const calInterval = () => {
         // * 0. 출발시간을 기준으로 margin-bottom 을 가져와서 각 값을 재설정 해준다. 
-        // * 1. li 컴포넌트에 클래스로 값을 달리 해준다 -> 몇 번 째인지 어케 알지
+        // * 1. li 컴포넌트에 클래스로 값을 달리 해준다
 
         const departTimes = [];
 
@@ -78,9 +79,11 @@ function TrainResult() {
         
     }
 
+    // * margin 계산 함수
+    // - timeInterval -> 각 시간 사이 간격을 계산
+    // - <li></li> -> 시간 간격당 margin 을 주는 className을 각각 설정
     const setMarginBottom = (order) => {
         let margin = '';
-        console.log(timeInterval[order]);
 
         if (timeInterval[order] <= 10) {
             margin = 'small-margin';

@@ -89,7 +89,7 @@ main {
 }
 
 .time-table ul .small-margin {
-    margin-bottom: 5px;
+    margin-bottom: -5px;
 }
 
 .time-table ul .small-medium-margin {
