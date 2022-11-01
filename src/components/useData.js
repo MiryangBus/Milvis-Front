@@ -11,12 +11,13 @@ export const callData = async(url) => {
 }
 
 // 2. 데이터 보내기 (post)
-export const sendData = async(url) => {
+export const sendData = async(url, data) => {
   // fetch option object
   const requestOption = {
-    method: 'POST'
+    method: 'POST',
+    body: data
   }
-  
+
   try {
     const data = await fetch(url, requestOption);
     const res = data.json();
