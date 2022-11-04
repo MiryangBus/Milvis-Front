@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import "./Bus.css";
-import FooterBus from "../components/Footer-bus";
+import FooterBus from "../components/FooterBus";
 import {Truck} from 'react-bootstrap-icons' ;
 import HeaderBus from "../components/Header-bus";
 import BusTime from '../components/BusTime';

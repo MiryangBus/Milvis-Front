@@ -5,6 +5,7 @@ import Main from "./page/Main";
 import Train from "./page/Train"
 import Map from "./page/Map";
 import Bus from "./page/Bus";
+import TrainResult from "./page/TrainResult";
 
 function App() {
   return (

@@ -3,7 +3,7 @@ import "./Button.css";
 
 const sizes = ['long-button', 'short-button', 'search-button'];
 
-const Button = ({buttonsize, content}) => {
+const Button = ({buttonsize, content, type}) => {
   const buttonSelect = () => {
     if (buttonsize === sizes[0]) {
       return sizes[0];
@@ -21,6 +21,7 @@ const Button = ({buttonsize, content}) => {
   return (
     <button
       className={buttonSelect()}
+      type={type}
     >
       {content}
     </button>

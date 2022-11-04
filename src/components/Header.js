@@ -30,7 +30,6 @@ const Header = () => {
                         width={"2rem"}
                         height={"2rem"}
                     />
-                    {console.log(isOpen)}
                     <div className="sidebar-position">
                         <span>기차-버스 조회</span>
                     </div>
