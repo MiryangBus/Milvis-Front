@@ -16,6 +16,7 @@ function App() {
           <Route exact path="/" element={<Main />}/>
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/map" element={<Map />}/>
+          <Route exact path="/trina-result" element={<TrainResult />} />
           <Route exact path="/bus/:date" element={<Bus />}/>
 
         </Routes>
