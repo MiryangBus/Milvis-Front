@@ -16,8 +16,8 @@ function App() {
           <Route exact path="/" element={<Main />}/>
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/map" element={<Map />}/>
-          <Route exact path="/bus" element={<Bus />}/>
-          <Route exact path="/train-result" element={<TrainResult />}/>
+          <Route exact path="/bus/:date" element={<Bus />}/>
+
         </Routes>
       </Router>
     </div>
