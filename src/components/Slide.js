@@ -7,7 +7,6 @@ const IMAGE_LENGTH = 3;
 
 const Slide = () => {
   const [currIndex, setCurrIndex] = useState(1);
-  console.log(currIndex);
 
   // * change pagination status 
   useEffect(() => {

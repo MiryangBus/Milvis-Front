@@ -1,7 +1,11 @@
 import React from 'react'
-import './TrainResult.css';
-import Button from "../components/Button";
 import { Link } from 'react-router-dom';
+
+import Button from "../components/Button";
+import { callData } from '../components/useData';
+import { FUNCTION1_URL } from '../API/API_URL';
+
+import './TrainResult.css';
 
 // TODO
 // 타임 테이블 어떻게 만들지 고민하기 
@@ -10,21 +14,8 @@ import { Link } from 'react-router-dom';
 // 버스 & 기차 의 타입과 시간을 합쳐서 정렬해놓은 새 object 만들기
 // 아님 이것도 백엔드에서 가능한가
 
-function TrainResult() {
-    const data = {
-        "type": "depart",
-        "departStation": "밀양",
-        "arriveStation": "부산",
-        "date": "2022-10-10",
-        "time": "14",
-        "times" : [
-            {"type" : "bus", "name" : "아리랑04", "depart" : "14 : 05", "arrive" : "14 : 17"},
-            {"type" : "train", "name" : "srt", "depart" : "14 : 08", "arrive" : "14 : 40"},
-            {"type" : "train", "name" : "ktx", "depart" : "14 : 30", "arrive" : "15 : 17"},
-            {"type" : "bus", "name" : "아리랑04", "depart" : "14 : 44", "arrive" : "15 : 00"},
-            {"type" : "train", "name" : "무궁화", "depart" : "14 : 55", "arrive" : "15 : 32"},
-        ]
-    };
+async function TrainResult() {
+    const data = await callData(FUNCTION1_URL);
     
     const timeInterval = [];
     const date = data.date.split("-");

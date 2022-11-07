@@ -20,15 +20,16 @@ const Header = () => {
                     to="/sidebar"
                     style={{ textDecoration: "none", color: "white" }}
                 >
-                    <List width={"2rem"} height={"2rem"} />
+                    <List />
+                    {/* <List width={"2rem"} height={"2rem"} /> */}
                 </Link>
             </div>
             <div className="navbar-container">
                 <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
                     <List
                         onClick={ToggleSidebar}
-                        width={"2rem"}
-                        height={"2rem"}
+                        // width={"2rem"}
+                        // height={"2rem"}
                     />
                     <div className="sidebar-position">
                         <span>기차-버스 조회</span>
