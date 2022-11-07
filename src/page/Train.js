@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Train.css";
 import Button from '../components/Button'
 import {sendData} from "../components/useData";
-
+import { FUNCTION1_URL } from '../API/API_URL';
 
 /*
   * render 
@@ -231,10 +231,10 @@ function Train() {
 
     data.date = dateData;
     data.time = timeData;
-    data.depart = departStation;
-    data.arrive = arriveStation;
+    data.departure_station = departStation;
+    data.destination_station = arriveStation;
 
-    sendData('', JSON.stringify(data));
+    sendData(FUNCTION1_URL, JSON.stringify(data));
 
     /* 4.2 페이지 전환 
       (Link를 Button에 달면 require이 안 먹음)

@@ -1,3 +1,4 @@
+
 // 1. 데이터 받아오기 (get)
 export const callData = async(url) => {
   try {
@@ -20,9 +21,10 @@ export const sendData = async(url, data) => {
 
   try {
     const data = await fetch(url, requestOption);
-    const res = data.json();
+    // const res = data.json();
+    console.log(data);
     
-    return res;
+    // return res;
   } catch(err) {
     console.log(err);
   }
