@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Train.css";
 import Button from '../components/Button'
 import {sendData} from "../components/useData";
-import { FUNCTION1_URL } from '../API/API_URL';
+import { TIME_TABLE_ORIGIN, TIME_TABLE_URL } from '../API/API_URL';
 
 /*
   * render 
@@ -234,12 +234,13 @@ function Train() {
     data.departure_station = departStation;
     data.destination_station = arriveStation;
 
-    sendData(FUNCTION1_URL, JSON.stringify(data));
+
+    sendData(TIME_TABLE_URL, JSON.stringify(data));
 
     /* 4.2 페이지 전환 
       (Link를 Button에 달면 require이 안 먹음)
       navigate 함수로 강제 url이동 */
-    navigate('/train-result');
+    // navigate('/train-result');
   }
 
   // --------------------------------------------------------------------------------
