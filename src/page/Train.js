@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import "./Train.css";
-import Button from '../components/Button'
+import Button from '../components/common/Button'
 import {sendData} from "../components/useData";
 import { TIME_TABLE_ORIGIN, TIME_TABLE_URL } from '../API/API_URL';
 

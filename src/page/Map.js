@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import "./Map.css";
 import Button from 'react-bootstrap/Button';
 /*global kakao*/ 

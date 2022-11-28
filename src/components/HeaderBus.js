@@ -1,8 +1,11 @@
 
-import React,{useState} from 'react'
-import "./Header.css";
-import "../page/Bus.css";
+import React, { useState  } from 'react'
+
 import {Link} from 'react-router-dom'
+import "./common/Header.css";
+import "../page/Bus.css";
+
+
 
 //Footer-main = Footer-main, Footer-bus 이므로 Footer.css로 합치고
 //안에 class로 쪼개기.
