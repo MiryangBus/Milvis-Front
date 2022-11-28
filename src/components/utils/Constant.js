@@ -1,14 +1,13 @@
 export const TRAIN_OPTION_TITLE = Object.freeze({
   DATE: "날짜",
-  TIME: "시간",
+  TIME: "출발 시각",
   DEAPRT: "출발",
   ARRIVE: "도착"
 });
 
 export const TRAIN_OPTION_EXPLAIN = Object.freeze({
   DATE: "출발하길 원하는 날짜를 선택해주세요.",
-  TIME: "출발하길 원하는 시간을 선택해주세요.",
-  TIME_PS: "❗️ 캠퍼스에서 출발할 경우 버스가 출발하는 시간을 선택해주세요."
+  TIME: `출발하길 원하는 시각을 선택해주세요. 캠퍼스에서 출발하는 경우 버스가 출발하기 원하는 시각을 골라주세요.`,
 });
 
 export const BASIC_STATION = Object.freeze({

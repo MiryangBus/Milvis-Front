@@ -1,8 +1,8 @@
-function ExplainTrainOption({title, explain}) {
+function ExplainTrainOption({title, explain, id}) {
   return (
     <>
-      <label>{title}</label>
-      <p>{explain}</p>
+      <label htmlFor={id}>{title}</label>
+      <p className="small-explain">{explain}</p>
     </>
   )
 }

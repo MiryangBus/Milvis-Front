@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import SelectDate from "./SelectDate";
+import SelectTime from "./SelectTime";
 import Button from '../common/Button';
 import { sendData } from "../useData";
 import { TIME_TABLE_URL } from '../../API/API_URL';
@@ -33,43 +34,8 @@ function TrainForm() {
     ],
   };
 
-
-  // * 1.1 min - max 시간 설정
-  const today = new Date().toISOString().split("T")[0];
-  // 1.1 한달 뒤 날짜 계산하는 함수
-  const timeCal = () => {
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const endDt = new Date(year, month, day + 31).toISOString().split("T")[0];
-
-    return endDt;
-  };
-
   // --------------------------------------------------------------------------------
 
-  // * 2. 시간 조회 컴포넌트 <TimeSelect />
-
-  const TimeSelect = () => {
-    const times = [];
-    // 시간 06~23시를 times 배열 안에 push
-    for (let i = 6; i < 24; i++) {
-      const c = String(i).padStart(2, "0");
-      times.push(c);
-    }
-    // render
-    // <option>시간</option> 형태
-    return (
-      <select id="time">
-        <optgroup className="time-options">
-          {times.map((item, index) => {
-            return <option key={index}>{item}</option>;
-          })}
-        </optgroup>
-      </select>
-    );
-  };
 
   // --------------------------------------------------------------------------------
 
@@ -235,14 +201,7 @@ function TrainForm() {
     <div className="form-container">
       <form onSubmit={(e) => onSubmit(e)}>
         <SelectDate />
-        <div className="time-input-container">
-          <label htmlFor="">출발 시각</label>
-          <p className="small-explain">
-            <span>❗️</span>캠퍼스에서 출발할 경우 버스가 출발하는 시간을
-            선택해주세요.
-          </p>
-          <TimeSelect />
-        </div>
+        <SelectTime />
         <div className="train-input-container">
           <div className="train-contents-container">
             <div className="depart-container" onClick={departClick}>

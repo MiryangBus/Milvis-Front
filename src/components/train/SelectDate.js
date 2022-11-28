@@ -10,6 +10,7 @@ function SelectDate() {
       <ExplainTrainOption 
       title={TRAIN_OPTION_TITLE.DATE}
       explain={TRAIN_OPTION_EXPLAIN.DATE}
+      id={"date"}
       />
       <input
       className='date-input-container'
