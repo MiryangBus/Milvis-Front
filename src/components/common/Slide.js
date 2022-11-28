@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import Button from '../common/Button'
+
+import Button from './Button'
 import "./Slide.css";
+
 const IMAGE_LENGTH = 3;
 
 

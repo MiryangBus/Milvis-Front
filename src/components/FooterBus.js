@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import "./FooterMain.css";
 
 //Footer-main = Footer-main, Footer-bus 이므로 Footer.css로 합치고
