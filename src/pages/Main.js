@@ -1,5 +1,6 @@
 import React from 'react'
-import Slide from '../components/Slide'
+
+import Slide from '../components/common/Slide'
 import FooterMain from '../components/FooterMain';
 import "./Main.css";
 

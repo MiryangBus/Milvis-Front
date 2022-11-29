@@ -1,5 +1,3 @@
-
-// 1. 데이터 받아오기 (get)
 export const callData = async(url) => {
   try {
     const data = await fetch(url);
@@ -11,7 +9,6 @@ export const callData = async(url) => {
   }
 }
 
-// 2. 데이터 보내기 (post)
 export const sendData = async(url, data) => {
   // fetch option object
   const requestOption = {

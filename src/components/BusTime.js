@@ -1,6 +1,6 @@
 import React from 'react';
-import "../page/Bus.css";
-import {Truck} from 'react-bootstrap-icons' ;
+
+import { Truck } from 'react-bootstrap-icons' ;
 
 const BusTimeTable = [
   {ID:1, hour:6, goto:'station', date:"weekday", time1:'a6시 05분',time2:'6시 05분',time3:'6시 05분'},
