@@ -2,7 +2,7 @@ import TrainForm from "../components/train/TrainForm";
 import "./Train.css";
 
 function Train() {  
-  // * Refactoring Component
+  // * component
   const TrainPageExplain = () => {
     return (
       <div className="explain-container">

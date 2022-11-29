@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import SelectDate from "./SelectDate";
 import SelectTime from "./SelectTime";
 import SelectStation from "./SelectStation";
+import Button from "../common/Button";
 import { sendData } from "../useData";
 import { TIME_TABLE_URL } from '../../API/API_URL';
 
@@ -38,6 +39,14 @@ function TrainForm() {
     return data;
   }
 
+  const makeDisableButton = () => {
+    if (departStation === arriveStation) {
+      return true;
+    }
+
+    return false;
+  }
+
   return (
     <div className="form-container">
       <form onSubmit={(e) => onSubmit(e)}>
@@ -48,6 +57,12 @@ function TrainForm() {
           arriveStation={arriveStation}
           setDepartStation={setDepartStation}
           setArriveStation={setArriveStation}
+        />
+        <Button
+        type={"submit"}
+        buttonsize={"search-button"}
+        content={"시간표 조회하기"}
+        disable={makeDisableButton()}
         />
       </form>
     </div>
