@@ -17,7 +17,18 @@ footer {
   position: relative;
   top:60px;
 }
-
+.footer-map{
+  width: 346px;
+  height: 70px;
+  /* left: 0px; */
+  /* top: 834px; */
+  top: -100px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  color: black;
+  position: relative;
+  z-index: 1;
+}
 .footer-bus{
   margin:auto;
   font-weight: bold;
