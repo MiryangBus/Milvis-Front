@@ -2,7 +2,7 @@ export const callData = async(url) => {
   try {
     const data = await fetch(url);
     const res = data.json();
-    
+    console.log("데이터받기",res)
     return res;
   } catch(err) {
     console.log(err);
@@ -10,6 +10,7 @@ export const callData = async(url) => {
 }
 
 export const sendData = async(url, data) => {
+  console.log("데이터보내기함수")
   // fetch option object
   const requestOption = {
     mode: 'cors',
