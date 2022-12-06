@@ -2,13 +2,13 @@ import React from 'react'
 import ExplainTrainOption from './ExplainTrainOption';
 
 import { dateCaculator } from './TimeCalculator';
-import { TRAIN_OPTION_TITLE, TRAIN_OPTION_EXPLAIN } from '../utils/Constant';
+import { TRAIN_OPTION, TRAIN_OPTION_EXPLAIN } from '../utils/Constant';
 
 function SelectDate() {
   return (
     <div className="date-input-container">
       <ExplainTrainOption 
-      title={TRAIN_OPTION_TITLE.DATE}
+      title={TRAIN_OPTION.DATE}
       explain={TRAIN_OPTION_EXPLAIN.DATE}
       id={"date"}
       />

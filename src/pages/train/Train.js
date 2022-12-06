@@ -1,4 +1,4 @@
-import TrainForm from "../components/train/TrainForm";
+import TrainForm from "../../components/train/TrainForm";
 import "./Train.css";
 
 function Train() {  

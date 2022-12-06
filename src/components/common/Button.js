@@ -22,7 +22,7 @@ const Button = ({buttonsize, content, type, disable}) => {
     <button
       className={buttonSelect()}
       type={type}
-      disabled={disable}
+      disabled={disable === undefined ? false : disable}
     >
       {content}
     </button>
