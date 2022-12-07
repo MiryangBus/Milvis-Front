@@ -1,0 +1,157 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.full {
+  width: 100vw;
+}
+
+.strong_font {
+  font-weight: 400;
+}
+
+.big_font {
+  font-size: 3rem;
+}
+
+header {
+  height: 50px;
+  position: relative;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.navIcon {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+nav {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 999;
+  background-color: #252834d3;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.list_item {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+button {
+  margin: 10px 5px;
+  background-color: #0047FF;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 auto;
+}
+
+.search_button {
+  /* max-width: 200px; */
+  width: 100%;
+}
+
+.long_button {
+  max-width: 250px;
+  width: 90%;
+}
+
+.short_button {
+  width: 100px;
+}
+
+button:disabled {
+  background-color: #848484;
+}
+
+.slide {
+  width: 100vw;
+  max-width: 450px;
+  height: 550px;
+  position: relative;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.slide ul {
+  position: absolute;
+  left: 0;
+  width: 300%;
+  max-width: 1350px;
+  height: 520px;
+  display: flex;
+  transition: left 0.5s ease-out;
+}
+
+.slide ul li {
+  width: 100vw;
+  max-width: 450px;
+  transform: translateX(cal(-443px - 443px));
+  transition: all 0.5s ease-out;
+}
+
+.slide-img {
+  width: 100%;
+  height: 200px;
+}
+
+.slide-explain {
+  width: 70%;
+}
+
+.slide-button {
+  width: 100%;
+  text-align: center;
+}
+
+.small-explain {
+  margin: 10px 0px;
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination div {
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background-color: #B2C3F0;
+  margin: 0 7px;
+  transition: all 1s;
+
+}
+
+.pagination .select {
+  background-color: #0047FF;
+}
