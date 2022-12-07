@@ -16,7 +16,7 @@ export const sendData = async(url, data) => {
     mode: 'cors',
     method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": 'application/json',
     },
     body: data,
     credentials: 'include',
@@ -26,10 +26,9 @@ export const sendData = async(url, data) => {
 
   try {
     const data = await fetch(url, requestOption);
-    console.log(data);
-    // const res = data.json();
+    const res = data.json();
     
-    // return res;
+    return res;
   } catch(err) {
     console.log(err);
   }

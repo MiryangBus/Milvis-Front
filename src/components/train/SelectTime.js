@@ -1,6 +1,6 @@
 import ExplainTrainOption from "./ExplainTrainOption";
 import { timeCalculator } from "./TimeCalculator";
-import { TRAIN_OPTION_TITLE, TRAIN_OPTION_EXPLAIN } from '../utils/Constant';
+import { TRAIN_OPTION, TRAIN_OPTION_EXPLAIN } from '../utils/Constant';
 
 function SelectTime() {
   const times = timeCalculator.makeTimeOptions();
@@ -8,7 +8,7 @@ function SelectTime() {
   return (
     <div className="time-input-container">
       <ExplainTrainOption
-      title={TRAIN_OPTION_TITLE.TIME}
+      title={TRAIN_OPTION.TIME}
       explain={TRAIN_OPTION_EXPLAIN.TIME}
       />
       <select id="time">

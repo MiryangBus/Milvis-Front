@@ -8,7 +8,9 @@ import SelectStation from "./SelectStation";
 import Button from "../common/Button";
 import { sendData } from "../useData";
 import { TIME_TABLE_URL } from '../../API/API_URL';
+import { EditTrainData } from "./EditTrainData";
 
+// TODO: 상수 변수로 바꿔주기
 function TrainForm() {
   const navigate = useNavigate();
   const [departStation, setDepartStation] = useState("밀양");
@@ -16,25 +18,26 @@ function TrainForm() {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-    const data = makeTrainData();
-    const {time_schedules} = await sendData(TIME_TABLE_URL, JSON.stringify(data));
-    data.timeSchedules = await time_schedules;
 
+    const data = makeRequestTrainData();
+    const {time_schedules} = await sendData(TIME_TABLE_URL, JSON.stringify(data), 1);
+    console.log(time_schedules);
+    data.time_schedules = time_schedules;
     navigate('/train/time-table', {
-      state: data
+      state: EditTrainData(data)
     });
   }
 
-  const makeTrainData = () => {
+  const makeRequestTrainData = () => {
     const data = {};
     const dateData = document.querySelector('#date').value;
     const timeData = document.querySelector('#time').value;
 
     data.type = departStation === "밀양" ? "depart" : "arrive";
     data.date = dateData;
-    data.departTime = timeData;
-    data.departureStation = departStation;
-    data.destinationStation = arriveStation;
+    data.time = timeData;
+    data.departure_station = departStation;
+    data.destination_station = arriveStation;
 
     return data;
   }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { STATIONS, TRAIN_OPTION_TITLE, BASIC_STATION } from '../utils/Constant';
+import { STATIONS, TRAIN_OPTION } from '../utils/Constant';
 
 function SelectStation({departStation, arriveStation, setDepartStation, setArriveStation}) {
   const [showDepartStations, setShowDepartStations] = useState(false);
@@ -83,9 +83,9 @@ function SelectStation({departStation, arriveStation, setDepartStation, setArriv
   const changeDepartStation = (name) => {
     setDepartStation((current) => {
       current = name;
-      if (arriveStation !== BASIC_STATION.MILYANG && current !== BASIC_STATION.MILYANG) {
+      if (arriveStation !== TRAIN_OPTION.MILYANG && current !== TRAIN_OPTION.MILYANG) {
         setArriveStation((current) => {
-          current = BASIC_STATION.MILYANG;
+          current = TRAIN_OPTION.MILYANG;
           return current;
         });
       }
@@ -98,9 +98,9 @@ function SelectStation({departStation, arriveStation, setDepartStation, setArriv
   const changeArriveStation = (name) => {
     setArriveStation((current) => {
       current = name;
-      if (departStation !== BASIC_STATION.MILYANG && current !== BASIC_STATION.MILYANG) {
+      if (departStation !== TRAIN_OPTION.MILYANG && current !== TRAIN_OPTION.MILYANG) {
         setDepartStation((current) => {
-          current = BASIC_STATION.MILYANG;
+          current = TRAIN_OPTION.MILYANG;
           return current;
         });
       }
@@ -115,7 +115,7 @@ function SelectStation({departStation, arriveStation, setDepartStation, setArriv
     return (
       <div className="train-contents-container">
         <div className="depart-container">
-          <div>{TRAIN_OPTION_TITLE.DEAPRT}</div>
+          <div>{TRAIN_OPTION.DEPART}</div>
           <h1
             onClick={departClick}
             className={showDepartStations === true ? "focus train-select" : "train-select"}
@@ -125,7 +125,7 @@ function SelectStation({departStation, arriveStation, setDepartStation, setArriv
         </div>
         <div className="reverse-arrow-container" onClick={reverseStation}>←→</div>
         <div>
-          <div>{TRAIN_OPTION_TITLE.ARRIVE}</div>
+          <div>{TRAIN_OPTION.ARRIVE}</div>
           <h1
           onClick={arriveClick}
           className={showArriveStations === true ? "focus train-select" : "train-select"}

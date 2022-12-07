@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/common/Header";
 import Main from "./pages/Main";
-import Train from "./pages/Train"
+import Train from "./pages/train/Train"
+import TrainResult from "./pages/train/TrainResult";
 import Map from "./pages/Map";
 import Bus from "./pages/Bus";
 import TrainResult from "./pages/TrainResult";
