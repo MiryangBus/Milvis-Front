@@ -6,7 +6,6 @@ import Train from "./pages/train/Train"
 import TrainResult from "./pages/train/TrainResult";
 import Map from "./pages/Map";
 import Bus from "./pages/Bus";
-import TrainResult from "./pages/TrainResult";
 import MapResult from "./pages/MapResult";
 import "./App.css";
 
