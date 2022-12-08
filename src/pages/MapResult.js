@@ -13,6 +13,8 @@ import { TIME_TABLE_ORIGIN, MAP_URL } from '../API/API_URL';
 const MapResult = (props) => {
   const {lat} = useParams();
   const {lng} = useParams();
+  const {Arrivelat} = useState(139);
+  const {Arrivelng} = useState(35);
   console.log(lat,lng)
 
     const onSubmit = (e) => {
@@ -68,9 +70,13 @@ const MapResult = (props) => {
     <div>
       <div className='map-explain'>출발 지점을 마커로 <br />찍어주세요 </div>
       <div id="map" style={{width:"350px", height:"700px"}}></div> 
+      <a href= {`map-result/${Arrivelat}/${Arrivelng}`}>        
       <Button className="map-button" variant="primary" onClick={onSubmit}>   확정  </Button>{' '}
+      </a>
     </div>
   )
 }
 
 export default MapResult
+
+

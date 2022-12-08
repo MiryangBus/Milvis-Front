@@ -7,6 +7,9 @@ import TrainResult from "./pages/train/TrainResult";
 import Map from "./pages/Map";
 import Bus from "./pages/Bus";
 import MapResult from "./pages/MapResult";
+import SearchingRoad from "./pages/SearchingRoad";
+
+
 import "./App.css";
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
           <Route exact path="/train/time-table" element={<TrainResult />} />
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/map-result/:lat/:lng" element={<MapResult />} />
+          <Route exact path="/SearchingRoad" element={<SearchingRoad />} />
           <Route exact path="/bus/:date" element={<Bus />}/>
         </Routes>
       </Router>
