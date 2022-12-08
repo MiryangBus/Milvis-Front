@@ -8,6 +8,8 @@ import Map from "./pages/Map";
 import Bus from "./pages/Bus";
 import MapResult from "./pages/MapResult";
 import SearchingRoad from "./pages/SearchingRoad";
+import Test from "./pages/Test";
+
 
 
 import "./App.css";
@@ -24,6 +26,8 @@ function App() {
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/map-result/:lat/:lng" element={<MapResult />} />
           <Route exact path="/SearchingRoad" element={<SearchingRoad />} />
+          <Route exact path="/test" element={<Test />} />
+
           <Route exact path="/bus/:date" element={<Bus />}/>
         </Routes>
       </Router>
