@@ -1,23 +1,40 @@
-.map-explain {
-    background-color: #252834;
-    height: 60px;
-    left: 122px;
-    top: 93px;
-    margin: 10px 0px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 30px;
-    text-align: center;
-    letter-spacing: -0.05em;
-  }
+#map-container {
+  position: relative;
+}
 
-  .map-button{
-    position: relative;
-    z-index: 2;
-    height: 30px;
-    width: 70px;
-    margin-left: 60%;
-    bottom: 39px;
-  }
+#pointer {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0044f75a;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.map-explain {
+  background-color: #252834;
+  height: 60px;
+  left: 122px;
+  top: 93px;
+  margin: 10px 0px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+
+.map-button {
+  position: relative;
+  z-index: 2;
+  height: 30px;
+  width: 70px;
+  margin-left: 60%;
+  bottom: 39px;
+}
+

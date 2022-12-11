@@ -4,7 +4,6 @@
 }
 
 * {
-  max-width: 768px;
   margin: 0 auto;
   padding: 0;
   font-family: 'Inter', sans-serif;
@@ -13,6 +12,7 @@
 }
 
 body {
+  max-width: 768px;
   min-width: 200px;
   background-color: var(--main);
   color: white;

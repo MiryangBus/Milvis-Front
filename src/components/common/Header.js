@@ -8,7 +8,6 @@ const MILVIS = 'Milvis';
 
 const Header = () => {
   const [isOpen, setIsopen] = useState(false);
-  console.log(isOpen);
 
   const openSideBar = () => {
     setIsopen(current => {
