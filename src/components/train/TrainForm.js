@@ -6,7 +6,7 @@ import SelectDate from "./SelectDate";
 import SelectTime from "./SelectTime";
 import SelectStation from "./SelectStation";
 import Button from "../common/Button";
-import { sendData } from "../useData";
+import { sendData } from "../../API/useData";
 import { TIME_TABLE_URL } from '../../API/API_URL';
 import { EditTrainData } from "./EditTrainData";
 
