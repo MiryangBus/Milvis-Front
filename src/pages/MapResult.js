@@ -11,6 +11,8 @@ const MapResult = (props) => {
   const { lat, lng } = useParams();
   const markers = [];
   let map = undefined;
+  const {Arrivelat} = useState(139);
+  const {Arrivelng} = useState(35);
 
   const onSubmit = async(e) => {
     e.preventDefault();
@@ -63,9 +65,11 @@ const MapResult = (props) => {
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
       </div>
+      <a href= {`map-result/${Arrivelat}/${Arrivelng}`}>       
       <Button className="map-button" variant="primary" onClick={onSubmit}>
         확정
       </Button>
+      </a>
     </div>
   );
 };
