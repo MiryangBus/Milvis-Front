@@ -30,9 +30,9 @@ function App() {
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/map-result/:lat/:lng" element={<MapResult />} />
           <Route exact path="/SearchingRoad" element={<SearchingRoad />} />
-          <Route exact path="/test" element={<Test />} />
-          <Route exact path="/BusTimeResult" element={<BusTimeResult />} />
-          <Route exact path="/map-result/test" element={<PolyLine />}/>
+          <Route exact path="/test" element={<Test />} />  
+          <Route exact path="/BusTimeResult" element={<BusTimeResult />} /> {/*기능2 결과페이지*/}
+          <Route exact path="/map-result/test" element={<PolyLine />}/>  {/*기능2 길그려주기 페이지*/}
 
           <Route exact path="/bus/:date" element={<Bus />}/>
         </Routes>
