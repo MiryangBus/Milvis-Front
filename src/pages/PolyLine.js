@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 
 /*global kakao*/
 function PolyLine() {
   let map = undefined;
-
+  const [lat, setLat] = useState(33.45103658098629);
+  const [lng, setLng] = useState(126.57130488606091);
+  const [lat2, setLat2] = useState(33.45326416780721);
+  const [lng2, setLng2] = useState(126.57148752901962);
+  const [lat3, setLat3] = useState(33.45322480184726);
+  const [lng3, setLng3] = useState(126.5731441083554);
   useEffect(() => {
     const mapContainer = document.getElementById("map");
     const mapOption = {
@@ -13,12 +18,13 @@ function PolyLine() {
 
     map = new kakao.maps.Map(mapContainer, mapOption);
     polyline.setMap(map);
+    
   }, []);
 
   const linePath = [
-    new kakao.maps.LatLng(33.452344169439975, 126.56878163224233),
-    new kakao.maps.LatLng(33.452739313807456, 126.5709308145358),
-    new kakao.maps.LatLng(33.45178067090639, 126.5726886938753) 
+    new kakao.maps.LatLng(lat, lng),
+    new kakao.maps.LatLng(lat2, lng2),
+    new kakao.maps.LatLng(lat3, lng3) 
   ];
 
   const polyline = new kakao.maps.Polyline({
@@ -28,6 +34,7 @@ function PolyLine() {
     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
     strokeStyle: "solid", // 선의 스타일입니다
   });
+ 
 
   return (
     <div>
