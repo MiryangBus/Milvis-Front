@@ -7,8 +7,8 @@ import MapResult from "./MapResult";
 
 /*global kakao*/
 const Map = () => {
-  const [lat, setLat] = useState(33.450701);
-  const [lng, setLng] = useState(126.570667);
+  const [lat, setLat] = useState(35.45373762287106);
+  const [lng, setLng] = useState(128.806692348998);
   const markers = [];
   let map = undefined;
 
@@ -57,7 +57,7 @@ const Map = () => {
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
       </div>
-      <a href={`map/${lat}/${lng}`}>
+      <a href={`map-result/${lat}/${lng}`}>
         <Button className="map-button" variant="primary">
           다음
         </Button>
