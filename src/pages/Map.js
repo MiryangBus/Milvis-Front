@@ -57,7 +57,7 @@ const Map = () => {
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
       </div>
-      <a href={`map-result/${lat}/${lng}`}>
+      <a href={`map/${lat}/${lng}`}>
         <Button className="map-button" variant="primary">
           다음
         </Button>

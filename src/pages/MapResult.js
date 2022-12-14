@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import FooterMap from "../components/FooterMap";
 
 import "./Map.css";
 import { sendData } from "../API/useData";
@@ -65,11 +66,12 @@ const MapResult = (props) => {
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
       </div>
-      <a href= {`map-result/${Arrivelat}/${Arrivelng}`}>       
+      <a href= {`map/${Arrivelat}/${Arrivelng}`}>       
       <Button className="map-button" variant="primary" onClick={onSubmit}>
         확정
       </Button>
       </a>
+      <FooterMap lat={lat} lng={lng}></FooterMap>
     </div>
   );
 };
