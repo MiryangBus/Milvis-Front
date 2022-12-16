@@ -3,7 +3,6 @@ import { useLocation } from "react-router";
 
 import ShowDepartInfo from "../../components/trainResult/ShowDepartInfo";
 import TimeTable from "../../components/trainResult/TimeTable";
-import "./TrainResult.css";
 
 function TrainResult() {
   const { state } = useLocation();

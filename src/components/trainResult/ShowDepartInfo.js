@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import "./trainResult.css";
 import Button from "../common/Button";
 
 //TODO: 버튼 사이즈 상수로 만들기?
@@ -16,7 +17,7 @@ function ShowDepartInfo({departStation, arriveStation, date, time}) {
   }
 
   return (
-    <div className="info-container">
+    <div id="train-depart-info">
       <DepartInfo />
       <Link to="/train" style={{width: "80%"}}>
         <Button
