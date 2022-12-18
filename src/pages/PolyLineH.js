@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 /*global kakao*/ 
 
-const Test = (props) => {
+const PolyLineH = (props) => {
   const { lat, lng, showCate } = useParams();
   const [lat4, setLat4] = useState(33.45103658098629);
   const [lng4, setLng4] = useState(126.57130488606091);
@@ -87,4 +87,4 @@ for (var i = 0; i < positions.length; i ++) {
   )
 }
 
-export default Test
+export default PolyLineH

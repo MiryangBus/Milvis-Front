@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/map-result/:lat/:lng/:showCate" element={<PolyLineH />}/>  {/*기능2 길그려주기 페이지-수연작성*/}
           {/* <Route exact path="/map/:lat/:lng" element={<MapResult />} />안쓴다..왜냐하면..목적지고정 */}
-          <Route exact path="/SearchingRoad" element={<SearchingRoad />} />
+          <Route exact path="/test/:lat/:lng/:showCate" element={<SearchingRoad />} />
           <Route exact path="/BusTimeResult" element={<BusTimeResult />} /> {/*기능2 결과페이지*/}
           <Route exact path="/bus/:date" element={<Bus />}/>
         </Routes>
