@@ -16,7 +16,7 @@ const Map = () => {
   let map = undefined;
 
   const onSubmit = async(e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const data = {};
     data.depart_time = "2022-12-11T12:11:00";
     data.station_x = lat;

@@ -8,14 +8,14 @@ import { useParams } from "react-router-dom";
 /*global kakao*/ 
 
 const Test = (props) => {
-  const { lat, lng } = useParams();
+  const { lat, lng, showCate } = useParams();
   const [lat4, setLat4] = useState(33.45103658098629);
   const [lng4, setLng4] = useState(126.57130488606091);
   const [lat2, setLat2] = useState(33.45326416780721);
   const [lng2, setLng2] = useState(126.57148752901962);
   const [lat3, setLat3] = useState(33.45322480184726);
   const [lng3, setLng3] = useState(126.5731441083554);
-  console.log(lat,lng)
+  console.log(lat,lng,showCate)
   useEffect(()=>{
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
