@@ -3,17 +3,19 @@ import FooterMap from "../components/FooterMap";
 import "./Map.css";
 import Button from 'react-bootstrap/Button';
 import MapResult from './MapResult';
+import { useParams } from "react-router-dom";
+
 /*global kakao*/ 
 
-
-const Test = () => {
-  const [lat, setLat] = useState(33.45103658098629);
-  const [lng, setLng] = useState(126.57130488606091);
+const Test = (props) => {
+  const { lat, lng } = useParams();
+  const [lat4, setLat4] = useState(33.45103658098629);
+  const [lng4, setLng4] = useState(126.57130488606091);
   const [lat2, setLat2] = useState(33.45326416780721);
   const [lng2, setLng2] = useState(126.57148752901962);
   const [lat3, setLat3] = useState(33.45322480184726);
   const [lng3, setLng3] = useState(126.5731441083554);
-
+  console.log(lat,lng)
   useEffect(()=>{
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
@@ -59,7 +61,7 @@ for (var i = 0; i < positions.length; i ++) {
     }
     // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
     const linePath = [
-        new kakao.maps.LatLng(lat, lng),
+        new kakao.maps.LatLng(lat4, lng4),
         new kakao.maps.LatLng(lat2, lng2),
         new kakao.maps.LatLng(lat3, lng3) 
     ];

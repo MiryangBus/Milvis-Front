@@ -18,10 +18,10 @@ const MapResult = (props) => {
   const onSubmit = async(e) => {
     e.preventDefault();
     const data = {};
-    data.departure_station_x = 33.450701;
-    data.departure_station_y = 126.570667;
-    data.destination_station_x = 33.45497066956483;
-    data.destination_station_y = 126.57878781590678;
+    data.depart_time = "2022-12-11T12:11:00";
+    data.station_x = 35.1284830930;
+    data.station_y = 127.294785930;
+    data.is_depart_from_campus = true
     const res = await sendData(MAP_URL, JSON.stringify(data));
     console.log(res);
   };

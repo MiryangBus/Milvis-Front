@@ -4,16 +4,15 @@ import "./FooterMain.css";
 //안에 class로 쪼개기.
 //수연이는 .안씀 나는 .쓰고 className으로
 const FooterMap = (props) => {
-  const [showCate, setShowCate] = useState(true);
   return (
     <div>
       <div className="footer-map">
         <div className="font-space" style={{fontSize:"10px"}}>출발지</div>
-          <div className="font-space"><div className={`${showCate?'font-color-gray':''}`} >{showCate === true ? "밀양캠퍼스" : "{props.lat}{props.lng}"}</div></div>
+          <div className="font-space"><div className={`${props.showCate?'font-color-gray':''}`} >{props.showCate === true ? "밀양캠퍼스" : "{props.lat}{props.lng}"}</div></div>
         <div className="center-line"></div>
-        <img  src="/picture/up-down3.png" onClick={()=>setShowCate(!showCate)} className={`arrow ${showCate?'':'rotate'}`} ></img> 
+        <img  src="/picture/up-down3.png" onClick={()=>props.setShowCate(!props.showCate)} className={`arrow ${props.showCate?'':'rotate'}`} ></img> 
         <div className="font-space" style={{fontSize:"10px"}}>도착지</div> 
-          <div className="font-space"><div className={`${showCate?'':'font-color-gray'}`} >{showCate === true ? "{props.lat}{props.lng}" : "밀양캠퍼스"}</div></div>
+          <div className="font-space"><div className={`${props.showCate?'':'font-color-gray'}`} >{props.showCate === true ? "{props.lat}{props.lng}" : "밀양캠퍼스"}</div></div>
       </div>
 
     </div>
