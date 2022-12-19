@@ -12,7 +12,9 @@ import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 const SearchingRoad = (props) => {
   const { lat, lng, showCate } = useParams();
   const [state, setState] = useState({data : []})
-  
+  const [myMark, setmyMark]=[]
+  const [myLine, setmyLine]=[]
+
   const onSubmit = async(e) => {
     // e.preventDefault();
     const data = {};
@@ -24,6 +26,7 @@ const SearchingRoad = (props) => {
     const res = await sendData(MAP_URL, JSON.stringify(data));
     setState({ data: res.results})
   };
+  console.log(state)
 
   useEffect(()=>{
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -31,7 +34,6 @@ const SearchingRoad = (props) => {
         center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
         level: 4 // 지도의 확대 레벨
     };
-
   const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
   const positions = [
     {
@@ -45,8 +47,6 @@ const SearchingRoad = (props) => {
     },
 
 ];
-
-
 
 // 마커 이미지의 이미지 주소입니다
 const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
