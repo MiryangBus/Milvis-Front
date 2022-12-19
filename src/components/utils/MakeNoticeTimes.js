@@ -11,7 +11,7 @@ export const makeStandardTimes = (type, timeSchedule) => {
   }
 
   if (type === TRAIN_OPTION.ARRIVE_ENG) {
-    makeArriveStandardTimes(timeSchedule[0]);
+    makeArriveStandardTimes(timeSchedule[0], standardTimes);
   }
 
   return standardTimes;

@@ -22,7 +22,6 @@ function TrainForm() {
 
     const data = makeRequestTrainData();
     const {time_schedules} = await sendData(TIME_TABLE_URL, JSON.stringify(data), 1);
-    console.log(time_schedules);
     data.time_schedules = time_schedules;
     navigate('/train/time-table', {
       state: EditTrainData(data)
