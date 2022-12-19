@@ -18,7 +18,7 @@ main {
 .explain p:nth-child(2),
 .explain p:nth-child(3) {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .form-container {
@@ -38,6 +38,7 @@ form div {
 form label {
   display: block;
   margin-bottom: 10px;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -71,7 +72,7 @@ form input:focus {
 
 .small-explain {
   margin-bottom: 10px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 100;
 }
 
@@ -98,9 +99,43 @@ form .train-input-container {
   font-size: 1.2rem;
 }
 
-.depart-container, 
-.arrive-container {
+/* * Station Select */
+
+/* form */
+#station-search-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* Header */
+
+#station-search-header {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  margin: 0;
+}
+
+#reverse-arrow {
   cursor: pointer;
+}
+
+/* Station */
+
+#stations {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+}
+
+#depart-station, 
+#arrive-station {
+  cursor: pointer;
+  font-size: 2.5rem;
   margin: 0;
 }
 
@@ -108,13 +143,38 @@ form .train-input-container {
   border-bottom: 2px solid #fff;
 }
 
-.train-select {
-  font-size: 2.5rem;
-  margin: 0;
+.hidden-bar {
+  display: none;
 }
 
-.reverse-arrow-container {
+/* ul */
+
+#search-station-ul {
+  margin: 10px 0px;
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  border-radius: 7px;
+}
+
+.search-station-li {
+  border-radius: 7px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  height: 40px;
+  padding: 10px 30px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
+}
+
+.search-station-li:last-child {
+  border-bottom: none;
+}
+
+.search-station-li:hover {
+  background-color: #edf0fa;
 }
 
 form .button-container {

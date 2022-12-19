@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 import SelectDate from "./SelectDate";
 import SelectTime from "./SelectTime";
-import SelectStation from "./SelectStation";
+// import SelectStation from "./SelectStation";
 import Button from "../common/Button";
 import { sendData } from "../../API/useData";
 import { TIME_TABLE_URL } from '../../API/API_URL';
-import { EditTrainData } from "./EditTrainData";
+import { EditTrainData } from "../utils/EditTrainData";
+import StationSearch from "./StationSearch";
 
 // TODO: 상수 변수로 바꿔주기
 function TrainForm() {
@@ -55,7 +56,7 @@ function TrainForm() {
       <form onSubmit={(e) => onSubmit(e)}>
         <SelectDate />
         <SelectTime />
-        <SelectStation 
+        <StationSearch
           departStation={departStation}
           arriveStation={arriveStation}
           setDepartStation={setDepartStation}
