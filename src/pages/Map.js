@@ -45,8 +45,7 @@ const Map = () => {
     kakao.maps.event.addListener(map, "dragend", dragEnd);
   }, []);
 
-
-
+  // * redering
   return (
     <div>
       <div className="map-explain">

@@ -11,9 +11,6 @@ import MapResult from "./pages/MapResult";
 import SearchingRoad from "./pages/SearchingRoad";
 import BusTimeResult from "./pages/BusTimeResult";
 import PolyLine from "./pages/PolyLine";
-import Test from "./pages/Test";
-
-
 
 import "./App.css";
 
@@ -29,7 +26,6 @@ function App() {
           <Route exact path="/map" element={<Map />}/>
           <Route exact path="/map/:lat/:lng" element={<MapResult />} />
           <Route exact path="/SearchingRoad" element={<SearchingRoad />} />
-          <Route exact path="/test" element={<Test />} />  {/*기능2 경로 그려주기 페이지*/}
           <Route exact path="/BusTimeResult" element={<BusTimeResult />} /> {/*기능2 결과페이지*/}
           <Route exact path="/map-result/test" element={<PolyLine />}/>  {/*기능2 길그려주기 페이지-수연작성*/}
           <Route exact path="/bus/:date" element={<Bus />}/>
