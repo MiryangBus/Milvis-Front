@@ -11,17 +11,8 @@ import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 // test페이지 만듦
 const SearchingRoad = (props) => {
   const { lat, lng, showCate } = useParams();
-  const [lat4, setLat4] = useState(35.450180777031726);
-  const [lng4, setLng4] = useState(128.79987274871453);
-  const [lat2, setLat2] = useState(35.45120243188731);
-  const [lng2, setLng2] = useState(128.79723027759243);
-  const [lat3, setLat3] = useState(35.45201469173419);
-  const [lng3, setLng3] = useState( 128.79714922310873);
   const [state, setState] = useState({data : []})
-
-
-  //좌표(polyline찍을거(목적지도 포함됨))
-
+  
   const onSubmit = async(e) => {
     // e.preventDefault();
     const data = {};
@@ -34,9 +25,6 @@ const SearchingRoad = (props) => {
     setState({ data: res.results})
   };
 
-
-
-
   useEffect(()=>{
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
@@ -46,11 +34,6 @@ const SearchingRoad = (props) => {
 
   const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
   const positions = [
-    // state.data.map((road, index) => (
-    //   {
-    //     latlng:new kakao.maps.LatLng(road.stations.x, road.stations.y)
-    //   }
-    // ))
     {
         latlng: new kakao.maps.LatLng(35.450180777031726, 128.79987274871453)
     },
@@ -85,11 +68,10 @@ for (var i = 0; i < positions.length; i ++) {
     });
     }
     // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-
     const linePath = [
-        new kakao.maps.LatLng(lat4, lng4),
-        new kakao.maps.LatLng(lat2, lng2),
-        new kakao.maps.LatLng(lat3, lng3) 
+        new kakao.maps.LatLng(35.450180777031726, 128.79987274871453),
+        new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243),
+        new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873) 
     ];
 
     // 지도에 표시할 선을 생성합니다
