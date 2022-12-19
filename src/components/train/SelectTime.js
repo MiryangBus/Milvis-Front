@@ -1,5 +1,5 @@
 import ExplainTrainOption from "./ExplainTrainOption";
-import { timeCalculator } from "./TimeCalculator";
+import { timeCalculator } from "../utils/TimeCalculator";
 import { TRAIN_OPTION, TRAIN_OPTION_EXPLAIN } from '../utils/Constant';
 
 function SelectTime() {

@@ -2,7 +2,6 @@ import TrainForm from "../../components/train/TrainForm";
 import "./Train.css";
 
 function Train() {  
-  // * component
   const TrainPageExplain = () => {
     return (
       <div className="explain-container">
@@ -17,8 +16,6 @@ function Train() {
       </div>
     );
   };
-
-  // * Render
 
   return (
     <main>

@@ -11,6 +11,8 @@ import MapResult from "./pages/MapResult";
 import SearchingRoad from "./pages/SearchingRoad";
 import BusTimeResult from "./pages/BusTimeResult";
 import PolyLine from "./pages/PolyLine";
+import Test from "./pages/Test";
+
 
 import "./App.css";
 
@@ -20,6 +22,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          <Route exact path="/test" element={<Test />}/>
           <Route exact path="/" element={<Main />}/>
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/train/time-table" element={<TrainResult />} />
