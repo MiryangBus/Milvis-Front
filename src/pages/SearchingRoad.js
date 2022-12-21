@@ -12,8 +12,18 @@ import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 const SearchingRoad = (props) => {
   const { lat, lng, showCate } = useParams();
   const [state, setState] = useState({data : []})
-  const [myMark, setmyMark]=[]
-  const [myLine, setmyLine]=[]
+  const [myMark, setmyMark]=useState()
+  const [myLine, setmyLine]=useState()
+  const myStation = [];
+  // const myInfo = () =>{
+  //   state.data.map((road, index) => (
+  //     console.log(road),
+  //     myStation.push(road.stations[index]),
+  //     // setmyMark(road.stations[index].name),
+  //     console.log(myStation)
+  //   )
+  //   )
+  // }
 
   const onSubmit = async(e) => {
     // e.preventDefault();
@@ -21,14 +31,15 @@ const SearchingRoad = (props) => {
     data.depart_time = "2022-12-11T12:11:00";
     data.station_x = lat;
     data.station_y = lng;
-    console.log(showCate)
     data.is_depart_from_campus = showCate
     const res = await sendData(MAP_URL, JSON.stringify(data));
     setState({ data: res.results})
+    // myInfo()
   };
-  console.log(state)
+
 
   useEffect(()=>{
+    
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
@@ -104,9 +115,15 @@ for (var i = 0; i < positions.length; i ++) {
       }
     </div>
   )
-
 }
 
 export default SearchingRoad
 // console.log(state.data.results[0].stations);//0번 노선
 //          console.log(road.stations.length)
+//console.log(road.stations[index].name
+//line id 개수 추출
+// line id 에 해당하는 stations추출
+// 근데 stations가 또 배열이므로 map을 써야한다.
+// 노선을 구하고 그 노선에 해당하는 stations을
+// newmydata=[{mynumber:"",mystations:""}]
+// 이렇게 만들고 
