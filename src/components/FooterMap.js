@@ -23,7 +23,3 @@ const FooterMap = (props) => {
 export default FooterMap;
 //처음에 false 라서 rotate로 간다
 //"is_depart_from_campus": "TRUE" 캠퍼스로부터 출발이 맞다 캠퍼스 출발은 true이다
-<<<<<<< HEAD
-=======
-////{props.lat} {props.lng}
->>>>>>> ea6dc4137513ac52e3dd43602cda53597fe198bd
