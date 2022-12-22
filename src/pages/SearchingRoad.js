@@ -110,14 +110,14 @@ for (var i = 0; i < positions.length; i ++) {
       </Button>
       {
       state.data ? (
-        state.data.map((road, index) => (
-          console.log(road.line_id),
-          console.log(road.bus),
-          console.log(road.stations),
-          console.log(road.stations.length),
-          console.log("eeeeeeeee")
-        )
-        )
+        state.data.map((road, index) => {
+          const {stations} = road;
+          console.log(road.line_id)
+          stations.map((station) => {
+            console.log(station.x);
+            console.log(station.y);
+          })
+        })
       ): ("no")
       }
     
