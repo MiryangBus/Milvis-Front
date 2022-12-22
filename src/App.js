@@ -21,7 +21,6 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/test" element={<Test />}/>
           <Route exact path="/" element={<Main />}/>
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/train/time-table" element={<TrainResult />} />

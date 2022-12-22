@@ -81,9 +81,8 @@ for (var i = 0; i < positions.length; i ++) {
 
   return (
     <div>
-      <input
-      onKeyUp={onChange}
-      />
+      <div className='map-explain'>길 그리기 테스트 <br />페이지 </div>
+      <div id="map" style={{width:"350px", height:"700px"}}></div> 
     </div>
   )
 }
