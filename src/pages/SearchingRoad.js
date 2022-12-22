@@ -1,4 +1,4 @@
-import React, { useEffect,useState,Link } from 'react'
+import React, { useEffect,useState,Link,useRef } from 'react'
 import FooterMap from "../components/FooterMap";
 import "./Map.css";
 import Button from 'react-bootstrap/Button';
@@ -6,14 +6,18 @@ import MapResult from './MapResult';
 import { useParams } from "react-router-dom";
 import { sendData } from "../API/useData";
 import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
+import BusInfo from '../components/busInfo/BusInfo';
+
+
 /*global kakao*/ 
 // 받아온 데이터를 중간 버튼 없이 바로 넘기려고 하니 데이터가 넘어가지 않아서
 // test페이지 만듦
 const SearchingRoad = (props) => {
   const { lat, lng, showCate } = useParams();
   const [state, setState] = useState({data : []})
+  const [lineNum, setlineNum]=useState([]) //버스노선번호 저장하기
+  const lineID = useRef(0);
   const [myMark, setmyMark]=useState()
-  const [myLine, setmyLine]=useState()
   const myStation = [];
   // const myInfo = () =>{
   //   state.data.map((road, index) => (
@@ -24,7 +28,6 @@ const SearchingRoad = (props) => {
   //   )
   //   )
   // }
-
   const onSubmit = async(e) => {
     // e.preventDefault();
     const data = {};
@@ -108,11 +111,17 @@ for (var i = 0; i < positions.length; i ++) {
       {
       state.data ? (
         state.data.map((road, index) => (
-          console.log(road.stations)
+          console.log(road.line_id),
+          console.log(road.bus),
+          console.log(road.stations),
+          console.log(road.stations.length),
+          console.log("eeeeeeeee")
         )
         )
       ): ("no")
       }
+    
+
     </div>
   )
 }
@@ -127,3 +136,5 @@ export default SearchingRoad
 // 노선을 구하고 그 노선에 해당하는 stations을
 // newmydata=[{mynumber:"",mystations:""}]
 // 이렇게 만들고 
+// 컴포넌트 만들고 거기에 line_id를 넘겨준다.
+// line_id인 

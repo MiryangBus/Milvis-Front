@@ -1,13 +1,11 @@
 import React, { useEffect,useState,Link } from 'react'
-import FooterMap from "../components/FooterMap";
-import "./Map.css";
+import '../../pages/Map.css'
 import Button from 'react-bootstrap/Button';
-import MapResult from './MapResult';
-import "./BusTimeResult.css";
+import "./BusInfo.css";
 
 /*global kakao*/ 
 
-const BusTimeResult = () => {
+const BusInfo = () => {
   useEffect(()=>{
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -46,4 +44,4 @@ const BusTimeResult = () => {
   )
 }
 
-export default BusTimeResult
+export default BusInfo
