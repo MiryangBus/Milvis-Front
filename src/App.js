@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import "./App.css";
 import Header from "./components/common/Header";
 import Main from "./pages/Main";
 import Train from "./pages/train/Train"
 import TrainResult from "./pages/train/TrainResult";
 import Map from "./pages/Map";
-import Bus from "./pages/Bus";
+import Bus from "./pages/busTime/Bus";
 import MapResult from "./pages/MapResult";
 import SearchingRoad from "./pages/SearchingRoad";
 import BusTimeResult from "./pages/BusTimeResult";

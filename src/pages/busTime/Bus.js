@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import "./Bus.css";
-import FooterBus from "../components/FooterBus";
+import FooterBus from "../../components/FooterBus";
 import {Truck} from 'react-bootstrap-icons' ;
-import HeaderBus from "../components/HeaderBus";
-import BusTime from '../components/BusTime';
+import HeaderBus from "../../components/HeaderBus";
+import BusTime from '../../components/BusTime';
 
 const Bus = () =>  {
   const [date, setDate] = useState();
