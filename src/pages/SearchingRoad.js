@@ -1,323 +1,140 @@
-import React, { useEffect,useState } from 'react'
-import Header from "../components/common/Header";
-import { useParams } from "react-router-dom";
+import React, { useEffect,useState,Link,useRef } from 'react'
+import FooterMap from "../components/FooterMap";
 import "./Map.css";
-import "./SearchingRoad.css";
-
 import Button from 'react-bootstrap/Button';
-import "./SearchingRoad.css";
-import { TIME_TABLE_ORIGIN, MAP_URL } from '../API/API_URL';
+import MapResult from './MapResult';
+import { useParams } from "react-router-dom";
+import { sendData } from "../API/useData";
+import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
+import BusInfo from '../components/busInfo/BusInfo';
 
-/* eslint-disable no-restricted-globals */
+
 /*global kakao*/ 
+// 받아온 데이터를 중간 버튼 없이 바로 넘기려고 하니 데이터가 넘어가지 않아서
+// test페이지 만듦
 const SearchingRoad = (props) => {
+  const { lat, lng, showCate } = useParams();
+  const [state, setState] = useState({data : []})
+  const [lineNum, setlineNum]=useState([]) //버스노선번호 저장하기
+  const lineID = useRef(0);
+  const [myMark, setmyMark]=useState()
+  const myStation = [];
+  // const myInfo = () =>{
+  //   state.data.map((road, index) => (
+  //     console.log(road),
+  //     myStation.push(road.stations[index]),
+  //     // setmyMark(road.stations[index].name),
+  //     console.log(myStation)
+  //   )
+  //   )
+  // }
+  const onSubmit = async(e) => {
+    // e.preventDefault();
+    const data = {};
+    data.depart_time = "2022-12-11T12:11:00";
+    data.station_x = lat;
+    data.station_y = lng;
+    data.is_depart_from_campus = showCate
+    const res = await sendData(MAP_URL, JSON.stringify(data));
+    setState({ data: res.results})
+    // myInfo()
+  };
+
+
   useEffect(()=>{
+    
+  const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
+  const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+  const positions = [
+    {
+        latlng: new kakao.maps.LatLng(35.450180777031726, 128.79987274871453)
+    },
+    {
+        latlng: new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243)
+    },
+    {
+        latlng: new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873)
+    },
 
-// 마커를 담을 배열입니다
-    var markers = [];
-    let presentPosition;
-    
-    /////////////////지도의 중심을 현재 위치로 변경///////////////////////
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = { 
-            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨 
-        }; 
-    
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    
-    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-    if (navigator.geolocation) {
-        
-        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-        navigator.geolocation.getCurrentPosition(function(position) {
-            
-            var lat = position.coords.latitude, // 위도
-                lon = position.coords.longitude; // 경도
-            
-            var locPosition = new kakao.maps.LatLng(lat, lon) // geolocation으로 얻어온 좌표
-            presentPosition=locPosition;
-            map.setCenter(locPosition);   
-  
-          });
-        
-    } else { // HTML5의 GeoLocation을 사용할 수 없을때 
-        
-        var locPosition = new kakao.maps.LatLng(37.566826, 126.9786567)
-        alert('현재 위치를 찾을 수 없습니다!');
-    }
-    
-    ////////////////////장소 검색/////////////////////////////
-    // 장소 검색 객체를 생성합니다
-    var ps = new kakao.maps.services.Places();  
-    
-    // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-    
-    const searchForm = document.querySelector('.form');
-    searchForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        // 키워드로 장소를 검색합니다
-        searchPlaces();
-    })
-    
-    // 키워드 검색을 요청하는 함수입니다
-    function searchPlaces() {
-    
-        var keyword = document.getElementById('keyword').value;
-    
-        if (!keyword.replace(/^\s+|\s+$/g, '')) {
-            alert('키워드를 입력해주세요!');
-            return false;
-        }
-    
-        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-        ps.keywordSearch( keyword, placesSearchCB); 
-    }
-    
-    // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-    function placesSearchCB(data, status, pagination) {
-        if (status === kakao.maps.services.Status.OK) {
-    
-            // 정상적으로 검색이 완료됐으면
-            // 검색 목록과 마커를 표출합니다
-            displayPlaces(data);
-    
-            // 페이지 번호를 표출합니다
-            displayPagination(pagination);
-    
-        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-    
-            alert('검색 결과가 존재하지 않습니다.');
-            return;
-    
-        } else if (status === kakao.maps.services.Status.ERROR) {
-    
-            alert('검색 결과 중 오류가 발생했습니다.');
-            return;
-    
-        }
-    }
-    
-    // 검색 결과 목록과 마커를 표출하는 함수입니다
-    function displayPlaces(places) {
-    
-        var listEl = document.getElementById('placesList'), 
-        menuEl = document.getElementById('menu_wrap'),
-        fragment = document.createDocumentFragment(), 
-        bounds = new kakao.maps.LatLngBounds(), 
-        listStr = '';
-        
-        // 검색 결과 목록에 추가된 항목들을 제거합니다
-        removeAllChildNods(listEl);
-    
-        // 지도에 표시되고 있는 마커를 제거합니다
-        removeMarker();
-        
-        for ( var i=0; i<places.length; i++ ) {
-    
-            const lon = places[i].x;
-            const lat = places[i].y;
-            const detailAddr = 0
-            // 마커를 생성하고 지도에 표시합니다
-            var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-                marker = addMarker(placePosition, i), 
-                itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-    
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-            // LatLngBounds 객체에 좌표를 추가합니다
-            bounds.extend(placePosition);
-    
-            // 마커와 검색결과 항목에 mouseover 했을때
-            // 해당 장소에 인포윈도우에 장소명을 표시합니다
-            // mouseout 했을 때는 인포윈도우를 닫습니다
-            (function(marker, title) {
-                kakao.maps.event.addListener(marker, 'mouseover', function() {
-                    displayInfowindow(marker, title);
-                });
-    
-                kakao.maps.event.addListener(marker, 'mouseout', function() {
-                    infowindow.close();
-                });
-    
-                itemEl.onmouseover =  function () {
-                    displayInfowindow(marker, title);
-                };
-    
-                itemEl.onmouseout =  function () {
-                    infowindow.close();
-                };
-            })(marker, places[i].place_name);
-    
-            // 마커와 검색 결과를 클릭했을때 좌표를 가져온다
-            (function(marker, title) {
-                kakao.maps.event.addListener(marker, 'click', function() {
-                    searchDetailAddrFromCoords(presentPosition, function(result, status) {
-                        if (status === kakao.maps.services.Status.OK) {
-                            detailAddr = !!result[0].road_address ? result[0].road_address.address_name : result[0].address.address_name;
-                            location.href = "https://map.kakao.com/?sName="+detailAddr+"&eName="+title                                            
-                        }   
-                    });
-                })
-    
-                itemEl.onclick =  function () {
-                    searchDetailAddrFromCoords(presentPosition, function(result, status) {
-                        if (status === kakao.maps.services.Status.OK) {
-                            detailAddr = !!result[0].road_address ? result[0].road_address.address_name : result[0].address.address_name;
-                            location.href = "https://map.kakao.com/?sName="+detailAddr+"&eName="+title                                            
-                        }   
-                    });
-                };
-            })(marker, places[i].place_name);
-    
-            fragment.appendChild(itemEl);
-        }
-    
-        // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-        listEl.appendChild(fragment);
-        menuEl.scrollTop = 0;
-    
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
-    }
-    
-    // 검색결과 항목을 Element로 반환하는 함수입니다
-    function getListItem(index, places) {
-    
-        var el = document.createElement('li'),
-        itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                    '<div class="info">' +
-                    '   <h5>' + places.place_name + '</h5>';
-    
-        if (places.road_address_name) {
-            itemStr += '    <span>' + places.road_address_name + '</span>' +
-                        '   <span class="jibun gray">' +  places.address_name  + '</span>';
-        } else {
-            itemStr += '    <span>' +  places.address_name  + '</span>'; 
-        }
-                    
-          itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                    '</div>';           
-    
-        el.innerHTML = itemStr;
-        el.className = 'item';
-    
-        return el;
-    }
-    
-    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-    function addMarker(position, idx, title) {
-        var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-            imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-            imgOptions =  {
-                spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-                spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-                offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-            },
-            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-                marker = new kakao.maps.Marker({
-                position: position, // 마커의 위치
-                image: markerImage 
-            });
-    
-        marker.setMap(map); // 지도 위에 마커를 표출합니다
-        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    
-        return marker;
-    }
-    
-    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
-    function removeMarker() {
-        for ( var i = 0; i < markers.length; i++ ) {
-            markers[i].setMap(null);
-        }   
-        markers = [];
-    }
-    
-    // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-    function displayPagination(pagination) {
-        var paginationEl = document.getElementById('pagination'),
-            fragment = document.createDocumentFragment(),
-            i; 
-    
-        // 기존에 추가된 페이지번호를 삭제합니다
-        while (paginationEl.hasChildNodes()) {
-            paginationEl.removeChild (paginationEl.lastChild);
-        }
-    
-        for (i=1; i<=pagination.last; i++) {
-            var el = document.createElement('a');
-            el.href = "#";
-            el.innerHTML = i;
-    
-            if (i===pagination.current) {
-                el.className = 'on';
-            } else {
-                el.onclick = (function(i) {
-                    return function() {
-                        pagination.gotoPage(i);
-                    }
-                })(i);
-            }
-    
-            fragment.appendChild(el);
-        }
-        paginationEl.appendChild(fragment);
-    }
-    
-    // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-    // 인포윈도우에 장소명을 표시합니다
-    function displayInfowindow(marker, title) {
-        var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-    
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-    }
-    
-    // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-    function removeAllChildNods(el) {   
-        while (el.hasChildNodes()) {
-            el.removeChild (el.lastChild);
-        }
-    }
-    
-    // 좌표 -> 주소
-    var geocoder = new kakao.maps.services.Geocoder();
-    function searchDetailAddrFromCoords(coords, callback) {
-        geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    }
+];
 
-  },[]);   
+// 마커 이미지의 이미지 주소입니다
+const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
     
+for (var i = 0; i < positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    const imageSize = new kakao.maps.Size(24, 35); 
+    
+    // 마커 이미지를 생성합니다    
+    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+    // 마커를 생성합니다
+    const marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지 
+    });
+    }
+    // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+    const linePath = [
+        new kakao.maps.LatLng(35.450180777031726, 128.79987274871453),
+        new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243),
+        new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873) 
+    ];
+
+    // 지도에 표시할 선을 생성합니다
+    const polyline = new kakao.maps.Polyline({
+        path: linePath, // 선을 구성하는 좌표배열 입니다
+        strokeWeight: 9, // 선의 두께 입니다
+        strokeColor: '#FFAE00', // 선의 색깔입니다
+        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        strokeStyle: 'solid' // 선의 스타일입니다
+    });
+    // 지도에 선을 표시합니다 
+    polyline.setMap(map);  
+
+},[]);   
+
   return (
     <div>
-      <div class="map_wrap">
-        <div id="map" style={{width:'100%',height:'100%',position:'relative',overflow:'hidden'}}></div>
-        <div id="menu_wrap" class="bg_white">
-          <div class="option">
-            <div>
-              <form class="form">
-                키워드 : <input type="text" value="" id="keyword" size="15"/> 
-                <button type="submit">검색하기</button> 
-              </form>
-            </div>
-          </div>
-          <hr/>
-          <ul id="placesList"></ul>
-          <div id="pagination"></div>
-        </div>
-      </div>
-      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=API키&libraries=services"></script>
-      <script src="map.js"></script>
+      <div className='map-explain'>test후 데이터 받고 결과 <br />보기 </div>
+      <div id="map" style={{width:"350px", height:"700px"}}></div> 
+      <Button onClick={onSubmit} className="map-button" variant="primary" >
+          test
+      </Button>
+      {
+      state.data ? (
+        state.data.map((road, index) => {
+          const {stations} = road;
+          console.log(road.line_id)
+          stations.map((station) => {
+            console.log(station.x);
+            console.log(station.y);
+          })
+        })
+      ): ("no")
+      }
+    
+
     </div>
   )
 }
 
 export default SearchingRoad
-
-
-//https://map.kakao.com/?sName=서울시청&eName=광화문
-//https://map.kakao.com/link/to/카카오판교오피스,37.402056,127.108212
-//https://map.kakao.com/link/to/18577297
-
-
+// console.log(state.data.results[0].stations);//0번 노선
+//          console.log(road.stations.length)
+//console.log(road.stations[index].name
+//line id 개수 추출
+// line id 에 해당하는 stations추출
+// 근데 stations가 또 배열이므로 map을 써야한다.
+// 노선을 구하고 그 노선에 해당하는 stations을
+// newmydata=[{mynumber:"",mystations:""}]
+// 이렇게 만들고 
+// 컴포넌트 만들고 거기에 line_id를 넘겨준다.
+// line_id인 
