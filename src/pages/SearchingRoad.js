@@ -1,4 +1,4 @@
-import React, { useEffect,useState,Link,useRef } from 'react'
+import React, { useEffect,useState,useRef } from 'react'
 import FooterMap from "../components/FooterMap";
 import "./Map.css";
 import Button from 'react-bootstrap/Button';
@@ -7,27 +7,20 @@ import { useParams } from "react-router-dom";
 import { sendData } from "../API/useData";
 import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 import BusInfo from '../components/busFind/BusInfo';
-
+import { useLocation } from 'react-router';
 
 /*global kakao*/ 
-// 받아온 데이터를 중간 버튼 없이 바로 넘기려고 하니 데이터가 넘어가지 않아서
-// test페이지 만듦
 const SearchingRoad = (props) => {
+  const location = useLocation();
+  console.log(location.state.time)
   const { lat, lng, showCate } = useParams();
   const [state, setState] = useState({data : []})
   const [lineNum, setlineNum]=useState([]) //버스노선번호 저장하기
   const lineID = useRef(0);
   const [myMark, setmyMark]=useState()
   const myStation = [];
-  // const myInfo = () =>{
-  //   state.data.map((road, index) => (
-  //     console.log(road),
-  //     myStation.push(road.stations[index]),
-  //     // setmyMark(road.stations[index].name),
-  //     console.log(myStation)
-  //   )
-  //   )
-  // }
+
+
   const onSubmit = async(e) => {
     // e.preventDefault();
     const data = {};
@@ -37,34 +30,31 @@ const SearchingRoad = (props) => {
     data.is_depart_from_campus = showCate
     const res = await sendData(MAP_URL, JSON.stringify(data));
     setState({ data: res.results})
-    // myInfo()
   };
 
-
   useEffect(()=>{
-    
-  const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-    mapOption = { 
-        center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
-    };
-  const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-  const positions = [
-    {
-        latlng: new kakao.maps.LatLng(35.450180777031726, 128.79987274871453)
-    },
-    {
-        latlng: new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243)
-    },
-    {
-        latlng: new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873)
-    },
-
-];
+    onSubmit()
+    console.log(state)  
+    const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+      mapOption = { 
+          center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
+          level: 4 // 지도의 확대 레벨
+      };
+    const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    const positions = [
+      {
+          latlng: new kakao.maps.LatLng(35.450180777031726, 128.79987274871453)
+      },
+      {
+          latlng: new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243)
+      },
+      {
+          latlng: new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873)
+      },
+  ];
 
 // 마커 이미지의 이미지 주소입니다
 const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
 for (var i = 0; i < positions.length; i ++) {
     
     // 마커 이미지의 이미지 크기 입니다
@@ -98,17 +88,13 @@ for (var i = 0; i < positions.length; i ++) {
     });
     // 지도에 선을 표시합니다 
     polyline.setMap(map);  
-
 },[]);   
-
+  
   return (
     <div>
       <div className='map-explain'>test후 데이터 받고 결과 <br />보기 </div>
       <div id="map" style={{width:"350px", height:"700px"}}></div> 
-      <Button onClick={onSubmit} className="map-button" variant="primary" >
-          test
-      </Button>
-      {
+      {/* {
       state.data ? (
         state.data.map((road, index) => {
           const {stations} = road;
@@ -119,22 +105,8 @@ for (var i = 0; i < positions.length; i ++) {
           })
         })
       ): ("no")
-      }
-    
-
+      } */}
     </div>
   )
 }
-
 export default SearchingRoad
-// console.log(state.data.results[0].stations);//0번 노선
-//          console.log(road.stations.length)
-//console.log(road.stations[index].name
-//line id 개수 추출
-// line id 에 해당하는 stations추출
-// 근데 stations가 또 배열이므로 map을 써야한다.
-// 노선을 구하고 그 노선에 해당하는 stations을
-// newmydata=[{mynumber:"",mystations:""}]
-// 이렇게 만들고 
-// 컴포넌트 만들고 거기에 line_id를 넘겨준다.
-// line_id인 
