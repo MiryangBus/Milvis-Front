@@ -12,14 +12,9 @@ import { useLocation } from 'react-router';
 /*global kakao*/ 
 const SearchingRoad = (props) => {
   const location = useLocation();
-  console.log(location.state.time)
+  // console.log(location.state.time)
   const { lat, lng, showCate } = useParams();
   const [state, setState] = useState({data : []})
-  const [lineNum, setlineNum]=useState([]) //버스노선번호 저장하기
-  const lineID = useRef(0);
-  const [myMark, setmyMark]=useState()
-  const myStation = [];
-
 
   const onSubmit = async(e) => {
     // e.preventDefault();
@@ -30,29 +25,45 @@ const SearchingRoad = (props) => {
     data.is_depart_from_campus = showCate
     const res = await sendData(MAP_URL, JSON.stringify(data));
     setState({ data: res.results})
+    console.log("onSubmit가 동작합니다.")
   };
-
+//
+  console.log(state) 
+ 
   useEffect(()=>{
+    console.log("useEffect가 동작합니다.") 
     onSubmit()
-    console.log(state)  
     const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-      mapOption = { 
-          center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
-          level: 4 // 지도의 확대 레벨
-      };
+    mapOption = {  
+        center: new kakao.maps.LatLng(35.45373762287106, 128.806692348998), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
     const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    const positions = [
-      {
-          latlng: new kakao.maps.LatLng(35.450180777031726, 128.79987274871453)
-      },
-      {
-          latlng: new kakao.maps.LatLng(35.45120243188731 , 128.79723027759243)
-      },
-      {
-          latlng: new kakao.maps.LatLng(35.45201469173419 , 128.79714922310873)
-      },
-  ];
 
+  //   const positions = [
+  //     state.data.map((road, index) => {
+  //     const {stations} = road;
+  //     stations.map((station) => {
+  //       const value = new kakao.maps.LatLng(station.x,station.y)
+  //       return({latlng:value})
+  //     })
+  //   })
+  // ]
+  const positions = [];
+  
+  state.data.forEach((road) => {
+    const {stations} = road;  //road.stations를 stations의 배열로 만듦 .
+    console.log("1개의 노선 좌표를 찍습니다.")
+    console.log(road)
+    stations.forEach((station) => {
+      const prop = {};
+      const value = new kakao.maps.LatLng(station.x, station.y);
+      prop.latlng = value;
+      positions.push(prop);
+      console.log(prop) 
+    })
+
+  })
 // 마커 이미지의 이미지 주소입니다
 const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 for (var i = 0; i < positions.length; i ++) {
