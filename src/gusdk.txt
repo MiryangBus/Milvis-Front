@@ -3,3 +3,10 @@
     * point 찍엇지만 다 연결된다. 
     * 동작은 하지만 한번 더 저장해야 찍힌다.
     * 
+    * station Info
+
+marker = [[{},{},{}],[{},{}],[{},{},{},{}]]
+
+page 는 state
+infoModal 
+
