@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./Map.css";
 import FooterMap from "../components/FooterMap";
-import PolyLineH from "./PolyLineH";
-import SearchingRoad from "./SearchingRoad";
 import { Link } from "react-router-dom";
-import { sendData } from "../API/useData";
-import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 import { timeCalculator } from "../components/utils/TimeCalculator";
+import BusDateTime from "../components/busFind/BusDateTime";
+import { ConeStriped } from "react-bootstrap-icons";
 
 /*global kakao*/
 const Map = () => {
@@ -17,6 +15,10 @@ const Map = () => {
   const markers = [];
   let map = undefined;
   const times = timeCalculator.makeTimeOptions();
+  const dateNow = new Date();
+  const today = dateNow.toISOString().slice(0, 10);
+  const [date, setDate] = useState(today);
+  const [time, setTime] = useState();
 
   useEffect(() => {
     const mapContainer = document.getElementById("map");
@@ -54,14 +56,16 @@ const Map = () => {
     <div>
       {console.log(lat,lng)}
       <div className="map-explain">
-        출발 지점을<br />
+        출발 지점과 날짜를<br />
         설정해주세요.{" "}
       </div>
+      <BusDateTime setDate={setDate} setTime={setTime}/> 
+      {console.log(date,"T",time,":00")}
       <div id="map-container">
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
       </div>
-      <Link to={`/test/${lat}/${lng}/${showCate}`} state={{ time:times}}>
+      <Link to={`/test/${lat}/${lng}/${showCate}`} state={{ date:date, time:time}}>
         <Button className="map-button" variant="primary" >
           다음
         </Button>
