@@ -13,9 +13,9 @@ const IMAGE_SRC = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mark
 /*global kakao*/ 
 const SearchingRoad = (props) => {
   const location = useLocation();
-  // console.log(location.state.time)
   const { lat, lng, showCate } = useParams(); 
   const [state, setState] = useState({data : []})
+  let [pagination, setPagination] = useState(1);
   
   const onSubmit = async(e) => {
     // e.preventDefault(); 
@@ -30,7 +30,19 @@ const SearchingRoad = (props) => {
 
   useEffect(()=>{
     onSubmit()    
-},[]);    
+  },[]);    
+
+  const setMarker = (position) => {
+    const imageSize = new kakao.maps.Size(24, 35);
+    const markerImage = new kakao.maps.MarkerImage(IMAGE_SRC, imageSize);
+    const marker = new kakao.maps.Marker({
+      map: map, // 마커를 표시할 지도
+      position: position, // 마커를 표시할 위치
+      image: markerImage, // 마커 이미지
+    });
+  }
+
+
 
   const mapContainer = document.getElementById('map'), // 지도를 표시할 div  
   mapOption = {  
@@ -39,43 +51,38 @@ const SearchingRoad = (props) => {
   };
   const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-  let [pagination, setPagination] = useState(1);
-
-  const countLine = [];
+//positions=[[{"x":1212,"y":4545},"x":1212,"y":4545},"x":1212,"y":4545}],["x":1212,"y":4545},"x":1212,"y":4545}],["x":1212,"y":4545}]]
   const positions = [];
   const lines = []
-
-state.data.forEach((road) => { 
-  const {stations} = road;  //road.stations를 stations의 배열로 만듦 .
-  countLine.push(road.line_id)
-  // console.log(countLine,countLine.length)
-  stations.forEach((station) => {
-    const prop = {};
-    const value = new kakao.maps.LatLng(station.x, station.y);
-    prop.latlng = value;
-    positions.push(prop);
-    lines.push(value)
+  const countLine = []
+  state.data.forEach((road) => {
+    const {stations} = road;  //road.stations를 stations의 배열로 만듦 .
+    console.log(stations)
+    stations.forEach((station) => {
+      const prop = {};
+      const value = new kakao.maps.LatLng(station.x, station.y);
+      prop.latlng = value;
+      positions.push(prop);
+      lines.push(value)
+    })
   })
-})
-
 
 // 마커 이미지의 이미지 주소입니다
-for (var i = 0; i < positions.length; i ++) {
-  
-  // 마커 이미지의 이미지 크기 입니다
-  const imageSize = new kakao.maps.Size(24, 35); 
-  
-  // 마커 이미지를 생성합니다    
-  const markerImage = new kakao.maps.MarkerImage(IMAGE_SRC, imageSize); 
-  
-  // 마커를 생성합니다
-  const marker = new kakao.maps.Marker({
-      map: map, // 마커를 표시할 지도
-      position: positions[i].latlng, // 마커를 표시할 위치
-      title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-      image : markerImage // 마커 이미지 
-  });
-}
+  for (var i = 0; i < positions.length; i ++) {
+    
+    // 마커 이미지의 이미지 크기 입니다
+    const imageSize = new kakao.maps.Size(24, 35); 
+    
+    // 마커 이미지를 생성합니다    
+    const markerImage = new kakao.maps.MarkerImage(IMAGE_SRC, imageSize); 
+    
+    // 마커를 생성합니다
+    const marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        image : markerImage // 마커 이미지 
+    });
+  }
 // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
 
 const polyline = new kakao.maps.Polyline({

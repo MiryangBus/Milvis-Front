@@ -41,19 +41,6 @@ const SearchingRoad = (props) => {
 
   const { lat, lng, showCate } = useParams();
   let [pagination, setPagination] = useState(1);
-  // const positions = [];
-  // const lines = [];
-
-  // state.data.forEach((road) => {
-  //   const { stations } = road;
-  //   const marker = [];
-
-  //   stations.forEach((station) => {
-  //     const value = new kakao.maps.LatLng(station.x, station.y);
-  //     marker.push(value);
-  //   })
-  //   positions.push(marker);
-  // })
 
 
   const setMarker = (position) => {
