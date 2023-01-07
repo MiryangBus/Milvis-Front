@@ -4,15 +4,11 @@ import Header from "./components/common/Header";
 import Main from "./pages/Main";
 import Train from "./pages/train/Train"
 import TrainResult from "./pages/train/TrainResult";
-import Map from "./pages/Map";
+import Map from "./pages/busFind/Map";
 import Bus from "./pages/busTime/Bus";
-import MapResult from "./pages/MapResult";
 import SearchingRoad from "./pages/SearchingRoad";
-import BusTimeResult from "./pages/BusTimeResult";
+import BusTimeResult from "./pages/busFind/BusTimeResult";
 import PolyLineH from "./pages/PolyLineH";
-
-
-import "./App.css";
 
 function App() {
   return (

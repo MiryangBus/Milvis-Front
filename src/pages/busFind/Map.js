@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./Map.css";
-import FooterMap from "../components/FooterMap";
+import FooterMap from "../../components/FooterMap";
 import { Link } from "react-router-dom";
-import { timeCalculator } from "../components/utils/TimeCalculator";
-import BusDateTime from "../components/busFind/BusDateTime";
-import { ConeStriped } from "react-bootstrap-icons";
+import BusDateTime from "../../components/busFind/BusDateTime";
 
 /*global kakao*/
 const Map = () => {
@@ -14,7 +12,6 @@ const Map = () => {
   const [lng, setLng] = useState(128.806692348998);
   const markers = [];
   let map = undefined;
-  const times = timeCalculator.makeTimeOptions();
   const dateNow = new Date();
   const today = dateNow.toISOString().slice(0, 10);
   const [date, setDate] = useState(today);

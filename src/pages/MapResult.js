@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import FooterMap from "../components/FooterMap";
-
-import "./Map.css";
+import "./busFind/Map.css";
 import { sendData } from "../API/useData";
 import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";
 

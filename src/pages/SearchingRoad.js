@@ -1,5 +1,5 @@
 import React, { useEffect,useState,useRef } from 'react'
-import "./Map.css";
+import "./busFind/Map.css";
 import { useParams } from "react-router-dom";
 import { sendData } from "../API/useData";
 import { TIME_TABLE_ORIGIN, MAP_URL } from "../API/API_URL";

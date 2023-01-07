@@ -1,6 +1,6 @@
 import React, { useEffect,useState,Link } from 'react'
 import FooterMap from "../components/FooterMap";
-import "./Map.css";
+import "./busFind/Map.css";
 import Button from 'react-bootstrap/Button';
 import MapResult from './MapResult';
 import { useParams } from "react-router-dom";
