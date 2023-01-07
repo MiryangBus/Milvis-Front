@@ -53,27 +53,15 @@ const SearchingRoad = (props) => {
       strokeColor: '#FFAE00', // 선의 색깔입니다
       strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
       strokeStyle: 'solid' // 선의 스타일입니다
-  });
-  // 지도에 선을 표시합니다 
-  polyline.setMap(map);   
-
-    
+    });
+    polyline.setMap(map);   
   }
-  const positions = [];
-  const stations =[]
   const positions2 = [];
   const lines = []
 
   state.data.forEach((road) => {
     const {stations} = road;  //road.stations를 stations의 배열로 만듦
-    positions2.push(stations) //[[{x:12,y:34}{x:12,y:34}{x:12,y:34}],[{x:12,y:34}{x:12,y:34}{x:12,y:34}],[{x:12,y:34}{x:12,y:34}{x:12,y:34}]]
-    // stations.forEach((station) => {
-    //   const prop = {};
-    //   const value = new kakao.maps.LatLng(station.x, station.y);
-    //   prop.latlng = value;
-    //   positions.push(prop);
-    //   lines.push(value)
-    // })
+    positions2.push(stations) 
   })
 
   const positions3 = []//현재 노선의 마커 카카오좌표
