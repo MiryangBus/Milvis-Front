@@ -7,8 +7,7 @@ import TrainResult from "./pages/train/TrainResult";
 import Map from "./pages/busFind/Map";
 import Bus from "./pages/busTime/Bus";
 import SearchingRoad from "./pages/SearchingRoad";
-import BusTimeResult from "./pages/busFind/BusTimeResult";
-import PolyLineH from "./pages/PolyLineH";
+import BusFindResult from "./pages/busFind/BusFindResult";
 
 function App() {
   return (
@@ -20,10 +19,8 @@ function App() {
           <Route exact path="/train" element={<Train />}/>
           <Route exact path="/train/time-table" element={<TrainResult />} />
           <Route exact path="/map" element={<Map />}/>
-          <Route exact path="/map-result/:lat/:lng/:showCate" element={<PolyLineH />}/>  {/*기능2 길그려주기 페이지-수연작성*/}
-          {/* <Route exact path="/map/:lat/:lng" element={<MapResult />} />안쓴다..왜냐하면..목적지고정 */}
-          <Route exact path="/test/:lat/:lng/:showCate" element={<SearchingRoad />} />
-          <Route exact path="/BusTimeResult" element={<BusTimeResult />} /> {/*기능2 결과페이지*/}
+          <Route exact path="/map/:lat/:lng/:showCate" element={<SearchingRoad />} />
+          <Route exact path="/BusFindResult" element={<BusFindResult />} /> {/*기능2 결과페이지*/}
           <Route exact path="/bus/:date" element={<Bus />}/>
         </Routes>
       </Router>
