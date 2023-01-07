@@ -13,7 +13,7 @@ const SearchingRoad = (props) => {
   const [state, setState] = useState({data : []})
   let [pagination, setPagination] = useState(1);
   let [currPageMarkers, setCurrPageMarkers] = useState(1);
-
+  console.log(location.state.date,"T",location.state.time,":00")
   
   const onSubmit = async(e) => {
     // e.preventDefault(); 
@@ -65,6 +65,7 @@ const SearchingRoad = (props) => {
   })
 
   const positions3 = []//현재 노선의 마커 카카오좌표
+  // console.log(positions2[pagination])
   const infoModal = () => {
     positions2[pagination].forEach((tt)=>{
       console.log(tt.x,tt.y)

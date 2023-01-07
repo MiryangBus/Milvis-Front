@@ -60,7 +60,7 @@ const Map = () => {
         설정해주세요.{" "}
       </div>
       <BusDateTime setDate={setDate} setTime={setTime}/> 
-      {console.log(date,"T",time,":00")}
+      {/* {console.log(date,"T",time,":00")} */}
       <div id="map-container">
         <div id="map" style={{ width: "350px", height: "700px" }}></div>
         <span id="pointer"></span>
